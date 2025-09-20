@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
   
-  <meta name="robots" content="none">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,22 +17,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>Xikan的博客</title>
+  <title>C笔记之基本介绍 - Xikan的博客</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Xikan的博客">
-<meta property="og:url" content="http://example.com/404">
+    <meta name="description" content="选择结构控制条件C语言支持逻辑判断和运算，但没有逻辑类型 0为假，非0为真，任何类型数据都可以作逻辑值 用if语句实现if语句的一般形式 123456789if(表达式) 语句1    [else 语句2]    if(表达式) 语句1    else if(表达式)        语句2    else if(表达式)        语句3    else 语句4  注意：  if else语句">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C笔记之基本介绍">
+<meta property="og:url" content="http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/3%20%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/">
 <meta property="og:site_name" content="Xikan的博客">
+<meta property="og:description" content="选择结构控制条件C语言支持逻辑判断和运算，但没有逻辑类型 0为假，非0为真，任何类型数据都可以作逻辑值 用if语句实现if语句的一般形式 123456789if(表达式) 语句1    [else 语句2]    if(表达式) 语句1    else if(表达式)        语句2    else if(表达式)        语句3    else 语句4  注意：  if else语句">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/head.png">
+<meta property="article:published_time" content="2025-09-20T14:25:16.000Z">
+<meta property="article:modified_time" content="2025-09-20T14:59:05.964Z">
 <meta property="article:author" content="Xikan">
+<meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/head.png">
   
   
   
-  
+  <meta name="keywords" content="C语言">
 
   <!-- feed -->
   
@@ -46,12 +51,12 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"http://example.com","author":{"@type":"Person","name":"Xikan","sameAs":[],"image":"/images/head.png"},"name":"Xikan的博客","description":"","url":"http://example.com"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Xikan","sameAs":[],"image":"/images/head.png"},"dateCreated":"2025-09-20T22:25:16+08:00","dateModified":"2025-09-20T22:59:05+08:00","datePublished":"2025-09-20T22:25:16+08:00","description":"","headline":"C笔记之基本介绍","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/3%20%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/"},"publisher":{"@type":"Organization","name":"Xikan","sameAs":[],"image":"/images/head.png","logo":{"@type":"ImageObject","url":"/images/head.png"}},"url":"http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/3%20%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/","keywords":"C语言","image":[]}</script>
   
 </head>
 <body>
 
-<div class="l_body index" id="start" layout="404" type="undefined" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/head.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Xikan的博客</div></a></div></header>
@@ -63,28 +68,95 @@
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
+
+
 <widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/1%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%B3/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/10%20%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/8%20%E7%BB%93%E6%9E%84%E4%BD%93/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/7%20%E6%8C%87%E9%92%88/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/6%20%E5%87%BD%E6%95%B0/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/5%20%E6%95%B0%E7%BB%84/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/4%20%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/3%20%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/"><span class="title">C笔记之基本介绍</span></a></div></widget>
-
-
 </div>
 
 </div></aside><div class="l_main" id="main">
 
 
 
-<article class='md-text error-page'>
-  <h1><img id='error' src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/404/1c830bfcd517d.svg' alt='404'></h1>
-  <p class='what'>
-    <strong>
-      很抱歉，您访问的页面不存在
-    </strong>
-  </p>
-  <p class='why'>
-    可能是输入地址有误或该地址已被删除
-  </p>
-  <br><br>
-  <a class='button' id='back' href="/">返回主页</a>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-09-20T14:25:16.000Z">2025-09-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-09-20T14:59:05.964Z">2025-09-20</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>C笔记之基本介绍</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h1><h2 id="控制条件"><a href="#控制条件" class="headerlink" title="控制条件"></a>控制条件</h2><p><strong>C语言支持逻辑判断和运算，但没有逻辑类型</strong></p>
+<p>0为假，非0为真，<font color=red>任何类型数据都可以作逻辑值</font></p>
+<h2 id="用if语句实现"><a href="#用if语句实现" class="headerlink" title="用if语句实现"></a>用if语句实现</h2><p><strong>if语句的一般形式</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(表达式) 语句<span class="number">1</span></span><br><span class="line">    [<span class="keyword">else</span> 语句<span class="number">2</span>]</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span>(表达式) 语句<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(表达式)</span><br><span class="line">        语句<span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(表达式)</span><br><span class="line">        语句<span class="number">3</span></span><br><span class="line">    <span class="keyword">else</span> 语句<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ol>
+<li><code>if else</code>语句是一个整体，属于同一个语句</li>
+<li><code>else</code>不能作为语句单独使用</li>
+<li><code>if</code>语句内也可以内嵌<code>if</code>语句</li>
+</ol>
+<h2 id="关系运算符和关系表达式"><a href="#关系运算符和关系表达式" class="headerlink" title="关系运算符和关系表达式"></a>关系运算符和关系表达式</h2><h3 id="关系运算符优先级"><a href="#关系运算符优先级" class="headerlink" title="关系运算符优先级"></a>关系运算符优先级</h3><p>优先级相同（高）：<code>&lt; &lt;= &gt; &gt;=</code></p>
+<p>优先级相同（低）：<code>== !=</code></p>
+<p>算数运算符 &gt; 关系运算符 &gt; 赋值运算符</p>
+<p>关系表达式：用关系运算符将两个数值或数值表达式连接起来的式子，关系表达式的值是逻辑值，“真”或“假”</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a;</span><br><span class="line">!a&gt;<span class="number">10</span>	<span class="comment">//恒定为假，因为!a只能为0或1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="逻辑运算符和逻辑表达式"><a href="#逻辑运算符和逻辑表达式" class="headerlink" title="逻辑运算符和逻辑表达式"></a>逻辑运算符和逻辑表达式</h2><p>&amp;&amp;：逻辑与	||：逻辑或	!：逻辑非</p>
+<p>逻辑与和逻辑或是双目运算符，逻辑非是单目运算符</p>
+<h4 id="优先级："><a href="#优先级：" class="headerlink" title="优先级："></a>优先级：</h4><p>非 &gt; 与 &gt; 或</p>
+<p>！&gt; 算数运算符 &gt; 关系运算符 &gt; &amp;&amp;和 || &gt; 赋值运算符</p>
+<h4 id="逻辑表达式："><a href="#逻辑表达式：" class="headerlink" title="逻辑表达式："></a>逻辑表达式：</h4><p>从左向右求解，<strong>结果不是0就是1，但表达式对象不但可以是0和1，还可以是0或非0的整数</strong>，也可以是字符型、浮点型、枚举型或指针型的纯量型数据</p>
+<p><code>a &amp;&amp; b &amp;&amp; c</code>：只有a为真时，才会判断b，a和b都为真时，才会判断c</p>
+<p><code>a || b || c</code>：若a为真，则不会判断b和c</p>
+<h4 id="表达式作逻辑值"><a href="#表达式作逻辑值" class="headerlink" title="表达式作逻辑值"></a>表达式作逻辑值</h4><p>表达式作逻辑值时，如<code>if(a=1)</code>，则 <code>a=1</code> 等价于 <code>(a=1)!=0</code>；<code>!(a=1)</code> 等价于 <code>(a=1)==0</code>；</p>
+<hr>
+<h2 id="条件运算符和条件表达式"><a href="#条件运算符和条件表达式" class="headerlink" title="条件运算符和条件表达式"></a>条件运算符和条件表达式</h2><p><code>表达式1 ? 表达式2 : 表达式3</code></p>
+<p>例：<code>(a&gt;b)?a:b</code>，如果<code>a&gt;b</code>为真，则表达式的值为a，否则为b</p>
+<ol>
+<li>条件运算符优先级高于赋值运算符，所以先求解，再赋值</li>
+<li>条件运算符先求解表达式1，看真假情况，求解表达式2或3</li>
+<li>可以不用把条件表达式赋给变量，可以在表达式2和3里直接给变量进行赋值</li>
+</ol>
+<hr>
+<h2 id="用switch语句实现"><a href="#用switch语句实现" class="headerlink" title="用switch语句实现"></a>用switch语句实现</h2><p><strong>switch语句是多分支选择语句</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)<span class="comment">//表达式的值应为整数类型或字符型</span></span><br><span class="line">&#123;<span class="comment">//语句体内包括多个case开头的语句和最多一个default开头的行</span></span><br><span class="line"> <span class="comment">//case后面跟常量或常量表达式</span></span><br><span class="line">	<span class="keyword">case</span> 常量<span class="number">1</span> : 语句<span class="number">1</span></span><br><span class="line">	<span class="keyword">case</span> 常量<span class="number">2</span> : 语句<span class="number">2</span></span><br><span class="line">	<span class="keyword">case</span> 常量n : 语句n</span><br><span class="line">	<span class="keyword">default</span>:语句n+<span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>执行顺序，先顺序查找各个 <code>case</code> ，如果没有匹配的，流程转去执行 <code>default</code> 后面的语句</li>
+<li><code>case</code> 和 <code>default</code> 都是一个<strong>标号</strong></li>
+<li>可以没有 <code>default</code> 标号，当没有匹配的 <code>case</code> 常量时，则不执行任何语句</li>
+<li>各个 <code>case</code> 标号出现次序不影响执行结果，可以先出先 <code>default</code> 标号</li>
+<li>每一个 <code>case</code> 常量<strong>必须不相同</strong></li>
+<li><code>case</code> 标号只起标记的作用，不进行任何条件检查</li>
+<li>如果各 <code>case</code> 子句中没有 <code>break</code> 语句，将向下连续输出</li>
+<li>多个 <code>case</code> 语句可以共用一组执行语句，如下</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(a)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;A&#x27;</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;B&#x27;</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;C&#x27;</span>:<span class="built_in">printf</span>(<span class="string">&quot;&gt;60\n&quot;</span>);<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/2%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">C笔记之基本介绍</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/5%20%E6%95%B0%E7%BB%84/">C笔记之基本介绍</a></div></section></div>
+
+
 
 
 
@@ -92,7 +164,12 @@
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Xikan</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84"><span class="toc-text">选择结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%9D%A1%E4%BB%B6"><span class="toc-text">控制条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8if%E8%AF%AD%E5%8F%A5%E5%AE%9E%E7%8E%B0"><span class="toc-text">用if语句实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E5%85%B3%E7%B3%BB%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">关系运算符和关系表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">关系运算符优先级</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">逻辑运算符和逻辑表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%9A"><span class="toc-text">优先级：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%9A"><span class="toc-text">逻辑表达式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BD%9C%E9%80%BB%E8%BE%91%E5%80%BC"><span class="toc-text">表达式作逻辑值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">条件运算符和条件表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8switch%E8%AF%AD%E5%8F%A5%E5%AE%9E%E7%8E%B0"><span class="toc-text">用switch语句实现</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>

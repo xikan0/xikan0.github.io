@@ -1,0 +1,1725 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>C笔记之基本介绍 - Xikan的博客</title>
+
+  
+    <meta name="description" content="C语言基础1.数据的表现形式1.1常量和变量常量 整形常量  1000、 0、-345   实型常量  十进制小数形式，如0.33(float型和double型) 指数形式，如12.334e3（代表12.34×10³）、-346.87e-25（代表$-346.87×10^-25$）   字符常量  ‘a’、’A’、’#’、’?’ 转义字符也是字符常量，如：’\n’   字符串常量  用” “括起来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C笔记之基本介绍">
+<meta property="og:url" content="http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/2%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+<meta property="og:site_name" content="Xikan的博客">
+<meta property="og:description" content="C语言基础1.数据的表现形式1.1常量和变量常量 整形常量  1000、 0、-345   实型常量  十进制小数形式，如0.33(float型和double型) 指数形式，如12.334e3（代表12.34×10³）、-346.87e-25（代表$-346.87×10^-25$）   字符常量  ‘a’、’A’、’#’、’?’ 转义字符也是字符常量，如：’\n’   字符串常量  用” “括起来">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/head.png">
+<meta property="article:published_time" content="2025-09-20T14:25:16.000Z">
+<meta property="article:modified_time" content="2025-09-20T14:58:51.672Z">
+<meta property="article:author" content="Xikan">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/head.png">
+  
+  
+  
+  <meta name="keywords" content="C语言">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+    <link rel="shortcut icon" href="/earth.ico">
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Xikan","sameAs":[],"image":"/images/head.png"},"dateCreated":"2025-09-20T22:25:16+08:00","dateModified":"2025-09-20T22:58:51+08:00","datePublished":"2025-09-20T22:25:16+08:00","description":"","headline":"C笔记之基本介绍","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/2%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/"},"publisher":{"@type":"Organization","name":"Xikan","sameAs":[],"image":"/images/head.png","logo":{"@type":"ImageObject","url":"/images/head.png"}},"url":"http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/2%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/","keywords":"C语言","image":[]}</script>
+  
+</head>
+<body>
+
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/head.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Xikan的博客</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/1%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%B3/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/10%20%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/8%20%E7%BB%93%E6%9E%84%E4%BD%93/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/7%20%E6%8C%87%E9%92%88/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/6%20%E5%87%BD%E6%95%B0/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/5%20%E6%95%B0%E7%BB%84/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/4%20%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/3%20%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/"><span class="title">C笔记之基本介绍</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-09-20T14:25:16.000Z">2025-09-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-09-20T14:58:51.672Z">2025-09-20</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>C笔记之基本介绍</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="C语言基础"><a href="#C语言基础" class="headerlink" title="C语言基础"></a>C语言基础</h1><h2 id="1-数据的表现形式"><a href="#1-数据的表现形式" class="headerlink" title="1.数据的表现形式"></a>1.数据的表现形式</h2><h3 id="1-1常量和变量"><a href="#1-1常量和变量" class="headerlink" title="1.1常量和变量"></a>1.1常量和变量</h3><h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ol>
+<li><p><strong>整形常量</strong></p>
+<ul>
+<li>1000、 0、-345</li>
+</ul>
+</li>
+<li><p><strong>实型常量</strong></p>
+<ul>
+<li>十进制小数形式，如0.33(float型和double型)</li>
+<li>指数形式，如12.334e3（代表12.34×10³）、-346.87e-25（代表$-346.87×10^-25$）</li>
+</ul>
+</li>
+<li><p><strong>字符常量</strong></p>
+<ul>
+<li>‘a’、’A’、’#’、’?’</li>
+<li>转义字符也是字符常量，如：’\n’</li>
+</ul>
+</li>
+<li><p><strong>字符串常量</strong></p>
+<ul>
+<li>用” “括起来的，末尾自动存储一个结束标志符(<code>&#39;\0&#39;</code>)</li>
+</ul>
+</li>
+<li><p><strong>符号常量</strong></p>
+<ul>
+<li>如：<code>#define PI 3.1416</code></li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>字符值</th>
+<th>输出结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\‘</td>
+<td>一个单撇号（’）</td>
+<td>‘</td>
+</tr>
+<tr>
+<td>\“</td>
+<td>一个双撇号（”）</td>
+<td>“</td>
+</tr>
+<tr>
+<td>\?</td>
+<td>一个问号（?）</td>
+<td>?</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>一个反斜线（\）</td>
+<td>\</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>警告（alert）</td>
+<td>产生声音或视觉信号</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格（backspace）</td>
+<td>将光标当前位置后退一个字符</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页（form feed）</td>
+<td>将光标当前位置移到下一页的开头</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+<td>将光标当前位置移到下一行开头</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+<td>将光标当前位置移到本行的开头</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>水平制表符</td>
+<td>将光标当前位置移到下一个Tab位置</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符</td>
+<td>将光标当前位置移到下一个垂直制表对齐点</td>
+</tr>
+<tr>
+<td>\o\oo或\ooo<br />其中o代表一个八进制数字</td>
+<td>与该八进制码对应的ASCII字符（最多三位数，不能大于7）</td>
+<td>与该八进制码对应的字符</td>
+</tr>
+<tr>
+<td>\xo(o)<br />其中h代表一个十六进制数字</td>
+<td>与该十六进制吗对应的ASCII字符（最多两位数）</td>
+<td>与该十六进制码对应的字符</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>浮点常量（实数）</strong></p>
+<p>实数只有十进制，单精度和双精度</p>
+</blockquote>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ol>
+<li>变量必须<strong>先定义，后使用</strong></li>
+<li>变量名由字母，数字，下划线组成，不能以数字开始，不能和C的关键字重名</li>
+</ol>
+<blockquote>
+<p>从变量中取值，实际上是通过变量名找到相应的内存地址，从该存储单元中读取数据</p>
+<p>在前面加<code>const</code>关键字的变量为<strong>常变量</strong></p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> a = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-2标识符和关键字"><a href="#1-2标识符和关键字" class="headerlink" title="1.2标识符和关键字"></a>1.2标识符和关键字</h3><p>计算机中，用来对变量、符号常量名、函数、、数组、类型等命名的有效字符序列统称为<strong>标识符</strong></p>
+<h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><table>
+<thead>
+<tr>
+<th>auto</th>
+<th>extern</th>
+<th>short</th>
+<th>while</th>
+<th>break</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>signed</td>
+<td>float</td>
+<td>case</td>
+<td>for</td>
+<td>sizeof</td>
+</tr>
+<tr>
+<td>char</td>
+<td>goto</td>
+<td>static</td>
+<td>const</td>
+<td>if</td>
+</tr>
+<tr>
+<td>struct</td>
+<td>continue</td>
+<td>inline</td>
+<td>switch</td>
+<td>default</td>
+</tr>
+<tr>
+<td>int</td>
+<td>typedef</td>
+<td>do</td>
+<td>long</td>
+<td>union</td>
+</tr>
+<tr>
+<td>double</td>
+<td>register</td>
+<td>unsigned</td>
+<td>else</td>
+<td>restrict</td>
+</tr>
+<tr>
+<td>void</td>
+<td>enum</td>
+<td>return</td>
+<td>volatile</td>
+<td>_Alignas</td>
+</tr>
+<tr>
+<td>_Alignof</td>
+<td>_Bool</td>
+<td>_Complex</td>
+<td>_Generic</td>
+<td>_Imaginary</td>
+</tr>
+<tr>
+<td>_Noreturn</td>
+<td>_Static_assert</td>
+<td>#_Thread_local</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="1-3数据的运算"><a href="#1-3数据的运算" class="headerlink" title="1.3数据的运算"></a>1.3数据的运算</h3><h4 id="数制基本概念"><a href="#数制基本概念" class="headerlink" title="数制基本概念"></a>数制基本概念</h4><p>指用一组固定的符号和统一的规则来表示数值的方法，按进位的原则进行计数的方法，称为<strong>进位计数制</strong></p>
+<p><strong>十六进制</strong>： 0 ~ 9 到 A ~ F（不区分大小写）</p>
+<p>十进制：2D		八进制：2O		十六进制：2H</p>
+<h4 id="数制转换-（重点）"><a href="#数制转换-（重点）" class="headerlink" title="数制转换 （重点）"></a>数制转换 <font color=red>（重点）</font></h4><p><strong>十进制转二、八、十六进制</strong></p>
+<p>除2（8、16）取余，倒序输出</p>
+<p>小数部分：<strong>乘（2,8,16）取整顺序输出</strong></p>
+<p>例：78.6875D &#x3D; ___B     </p>
+<h4 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h4><ol>
+<li>正数的原码、反码、补码相同</li>
+<li>负数的反码&#x3D;原码除符号位取反</li>
+<li>负数的补码&#x3D;负数的反码+1</li>
+</ol>
+<p><strong>注意：</strong></p>
+<ol>
+<li><strong>计算机在内存中存储方式是补码</strong></li>
+<li><strong>全体补码形似环，超过“最大数”即为“最小数”，反之同理</strong></li>
+<li>一个正数因递增变负数：向上发生“溢出”</li>
+<li>一个负数因递减变正数：向下发生“溢出”</li>
+</ol>
+<h3 id="1-4数据类型"><a href="#1-4数据类型" class="headerlink" title="1.4数据类型"></a>1.4数据类型</h3><p><img src="C:\Users\qwz\Pictures\md用的\e54de0ba67f379133d5bf026622a47a6.png"></p>
+<p><strong>特点：</strong></p>
+<ol>
+<li>基本类型的数据有原子性，不可分解</li>
+<li>不能定义 <code>void</code> 型变量</li>
+<li>指针类型标识存储对象的地址</li>
+<li>构造类型的数据可分解成若干“元素”，每个元素可以是基本类型也可以是其他构造类型</li>
+</ol>
+<hr>
+<h4 id="1-4-1整形数据"><a href="#1-4-1整形数据" class="headerlink" title="1.4.1整形数据"></a>1.4.1整形数据</h4><p>1）<strong>基本整形（int型）</strong></p>
+<p>占2个或4个字节（具体编译系统指定），在存储单元中存储的方式是：<strong>整数的补码</strong>形式存放，一个正数的补码是此数的二进制形式</p>
+<blockquote>
+<p>当为负数时，其补码是二进制取反，再加一</p>
+<p>最左一位是用来表示符号的，0表示正数，1表示负数</p>
+<p>当2字节时，整形分配变量范围是$2^{15}-1$到$-2^{15}$次方，即<code>32767~ -32768</code></p>
+<p>当4字节时，整形分配变量范围是$-2^{31}$到$2^{31}-1$，即<code>-2 147 483 648 ~ 2 147 483 647</code></p>
+</blockquote>
+<p>2）<strong>整形变量的符号属性</strong></p>
+<table>
+<thead>
+<tr>
+<th>类    型</th>
+<th>字节数</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>short（短整型）</td>
+<td>2</td>
+<td>-32768 ~ 32767，即 $-2^{15}$~($2^{15}-1$)</td>
+</tr>
+<tr>
+<td>unsigned short（无符号短整型）</td>
+<td>2</td>
+<td>0 ~ 65535，即 0~($2^{16}-1$)</td>
+</tr>
+<tr>
+<td>int（基本整形）</td>
+<td>4</td>
+<td>-2 147 483 648 ~ 2 147 483 647，即 $-2^{31}$~$(2^{31}-1)$</td>
+</tr>
+<tr>
+<td>unsigned int（无符号基本整形）</td>
+<td>4</td>
+<td>0 ~ 4 294 967 295，即 0~($2^{32}-1$)</td>
+</tr>
+<tr>
+<td>long（长整型）</td>
+<td>4</td>
+<td>-2 147 483 648 ~ 2 147 483 647，即 $-2^{31}$~$(2^{31}-1)$</td>
+</tr>
+<tr>
+<td>unsigned long（无符号长整型）</td>
+<td>4</td>
+<td>0 ~ 4 294 967 295，即 0~($2^{32}-1$)</td>
+</tr>
+<tr>
+<td>long long（双长型）</td>
+<td>8</td>
+<td>$-2^{63}$ ~ $(2^{63}-1)$</td>
+</tr>
+<tr>
+<td>unsigned long long（无符号双长整型）</td>
+<td>8</td>
+<td>0 ~ $(2^{64}-1)$</td>
+</tr>
+</tbody></table>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">signed</span>] <span class="type">int</span>	有符号基本整形</span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span>	无符号基本整形</span><br><span class="line">[<span class="type">signed</span>] <span class="type">short</span> [<span class="type">int</span>]	有符号短整型</span><br><span class="line"><span class="type">unsigned</span> <span class="type">short</span> [<span class="type">int</span>]	无符号短整型</span><br><span class="line">[]中可省略、以此类推</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意：</strong></p>
+<p>1）<font color=red>只有整形（包括字符型）可以加 <code>signed</code> 或 <code>unsigned</code> 修饰符，实型数据不能加</font></p>
+<p>2）<strong>无符号整形数据用<code>%u</code>格式输出</strong></p>
+</blockquote>
+<hr>
+<h4 id="1-4-2字符型数据（也算整型）"><a href="#1-4-2字符型数据（也算整型）" class="headerlink" title="1.4.2字符型数据（也算整型）"></a>1.4.2字符型数据（也算整型）</h4><blockquote>
+<p>ASCII码表将字符映射为7位二进制数</p>
+<p>0 ~ 31，127：控制字符</p>
+<p>32 ~ 126：可打印字符</p>
+</blockquote>
+<p><font color=red>字符可参与任何整型数的运算</font></p>
+<p>A&#x3D;65	a&#x3D;97	1&#x3D;49	空格&#x3D;32	小写&#x3D;大写+32</p>
+<p><strong>注意：</strong> <code>&#39;1&#39;</code>+<code>&#39;1&#39;</code> 不等于 2 或 <code>&#39;2&#39;</code></p>
+<p><font color=red><strong>字符变量</strong></font></p>
+<p>字符变量<strong>实质上是<font color=red>一个字节</font>的整型变量</strong>，占一个字节（7位编码，最高位是0），可以把0 ~ 127之间的整数赋给一个字符变量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> c=<span class="number">65</span>; 		<span class="comment">//等于char c=&#x27;A&#x27;;</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,c);	<span class="comment">//输出的是ASCII码值对应的字符，这里是A</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,c);	<span class="comment">//输出的是ASII码值，这里是65</span></span><br></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th>类    型</th>
+<th>字节数</th>
+<th>取 值 范 围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>signed char（有符号字符型）</td>
+<td>1</td>
+<td>$-128$~127，即$-2^7$ ~ $(2^7-1)$</td>
+</tr>
+<tr>
+<td>unsigned char（无符号字符型）</td>
+<td>1</td>
+<td>0 ~ 255，即0 ~ $(2^8-1)$</td>
+</tr>
+</tbody></table>
+<p><strong>注意：<strong>虽然可以表示负数，但</strong>字符代码不可能为负值</strong>，存储字符时实际上只用到了<code>0~127</code>这一部分，第一位都是0</p>
+<hr>
+<h4 id="1-4-3浮点型数据"><a href="#1-4-3浮点型数据" class="headerlink" title="1.4.3浮点型数据"></a>1.4.3浮点型数据</h4><p>用来表示具有小数点的数 ，3.14159 &#x3D; 0.314159 × $10^1$</p>
+<p><font color=red><strong>计算机不能精确地表示实数，实数只能由浮点数近似存储</strong></font></p>
+<table>
+<thead>
+<tr>
+<th>类    型</th>
+<th>字节数</th>
+<th>有效数字</th>
+<th>数值范围（绝对值）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4</td>
+<td>6</td>
+<td>0以及 1.2×$10^{-38}$ ~ 3.4×$10^{38}$</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>15</td>
+<td>0以及 2.3×$10^{-308}$ ~ 1.7×$10^{308}$</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>8</td>
+<td>15</td>
+<td>0以及 2.3×$10^{-308}$ ~ 1.7×$10^{308}$</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>16</td>
+<td>19</td>
+<td>0以及 3.4×$10^{-4932}$ ~ 1.1×$10^{4932}$</td>
+</tr>
+</tbody></table>
+<h4 id="1-4-4确定常量类型"><a href="#1-4-4确定常量类型" class="headerlink" title="1.4.4确定常量类型"></a>1.4.4确定常量类型</h4><p><strong>整形常量</strong>，注意有效范围，<code>int</code>范围内且不带小数点的都为<code>int</code>型，超过 范围的是<code>long long</code>类型</p>
+<p><strong>浮点型常量</strong>，凡是小数形式或指数形式出现的实数均是浮点型常量，在内存中都以指数形式存储</p>
+<p>例：10是整型常量，10.0是浮点型常量</p>
+<p><strong><font color=red>C程序中的实型常量都作为 双精度浮点型常量（double）</font></strong></p>
+<p>例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> a=<span class="number">3.14</span>;		<span class="comment">//该3.14是double型</span></span><br><span class="line"><span class="type">float</span> a=<span class="number">3.14f</span>(F);	<span class="comment">//该3.14是float型</span></span><br><span class="line"><span class="type">long</span> <span class="type">double</span> a=<span class="number">3.14L</span>;	<span class="comment">//该3.14是long double型</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="2-运算符和表达式"><a href="#2-运算符和表达式" class="headerlink" title="2.运算符和表达式"></a>2.运算符和表达式</h2><p><strong>结合性：</strong></p>
+<ol>
+<li>左结合：自左向右[<code>a + b + c</code> → <code>(a + b) + c</code>]</li>
+<li>右结合：自右向左[<code>a = b = c</code> → <code>a = (b = c)</code>]</li>
+</ol>
+<p><font color=red><strong>表达式的运算顺序规则</strong></font></p>
+<ol>
+<li><strong>从左向右扫描字符</strong>，逐个分析运算符和操作数</li>
+<li>括号最优先</li>
+<li>优先级较高先运算</li>
+<li>优先级相同，则按运算符的结合方向处理</li>
+</ol>
+<p><strong>优先级最高的运算符先与操作数进行绑定（按照结合性）</strong>，如果相同，则按结合性顺序绑定</p>
+<hr>
+<p><strong>各种运算符冲类：</strong></p>
+<p>算数运算符：加减乘除、取余、<code>++</code> <code>--</code></p>
+<p>关系运算符：大于、小于、大于等于、小于等于、不等于</p>
+<p>逻辑运算符：<code>!</code> <code>&amp;&amp;</code> <code>||</code></p>
+<p>位运算符：<code>&lt;&lt;</code> <code>&gt;&gt;</code> <code>~</code> <code>|</code> <code>^</code> <code>&amp;</code></p>
+<p>赋值运算符：&#x3D;及其扩展</p>
+<p>条件运算符：<code>?:</code>（三元运算符）</p>
+<p>逗号运算符：<code>,</code></p>
+<p>指针运算符：<code>*</code> <code>&amp;</code></p>
+<p>求字节数运算符：<code>sizeof</code></p>
+<p>强制类型转换运算符：<code>（类型）</code></p>
+<p>成员运算符：<code>.-&gt;</code></p>
+<p>下标运算符：<code>[]</code></p>
+<p>其他：如函数调用运算符<code>()</code></p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>多数C编译系统采用**“向零取整”**方法，即$5-3.2&#x3D;1$,$-5+3.2&#x3D;-1$，取整后向零靠拢</li>
+<li>%运算要用整数</li>
+<li>除%以外运算符操作数都可以是任何算数类型</li>
+</ul>
+<h3 id="2-1运算符的优先级"><a href="#2-1运算符的优先级" class="headerlink" title="2.1运算符的优先级"></a>2.1运算符的优先级</h3><table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>描述</th>
+<th>结合性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>()</code> <code>[]</code> <code>-&gt;</code> <code>.</code></td>
+<td>圆括号（函数调用）、数组下标、结构体指针成员、结构体成员</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>++</code> <code>--</code>（后缀）</td>
+<td>后缀自增、自减</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>++</code> <code>--</code>（前缀） <code>+</code>（正号） <code>-</code>（负号） <code>!</code> <code>~</code> <code>*</code>（取值） <code>&amp;</code>（取地址） <code>sizeof</code> <code>(type)</code>（强制类型转换）</td>
+<td>单目运算符</td>
+<td>自右向左</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>*</code> <code>/</code> <code>%</code></td>
+<td>乘、除、取余</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>+</code> <code>-</code></td>
+<td>加、减</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>&lt;&lt;</code> <code>&gt;&gt;</code></td>
+<td>左移、右移</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code></td>
+<td>小于、小于等于、大于、大于等于</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>==</code> <code>!=</code></td>
+<td>等于、不等于</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>&amp;</code></td>
+<td>按位与</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>^</code></td>
+<td>按位异或</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>11</td>
+<td>&#96;</td>
+<td>&#96;</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>&amp;&amp;</code></td>
+<td>逻辑与</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>13</td>
+<td>&#96;</td>
+<td></td>
+<td>&#96;</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>?:</code></td>
+<td>条件运算符（三目运算符）</td>
+<td>自右向左</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>&lt;&lt;=</code> <code>&gt;&gt;=</code> <code>&amp;=</code> <code>^=</code> &#96;</td>
+<td>&#x3D;&#96;</td>
+<td>赋值及复合赋值</td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>,</code></td>
+<td>逗号运算符</td>
+<td>自左向右</td>
+</tr>
+</tbody></table>
+<ol>
+<li>自增自减运算符不能用于常量和表达式，如：<code>--(x+y);++8;</code>都是非法的</li>
+<li>**后自增自减<code>(a++)</code>**是自左向右的结合方式，**前自增自减<code>(++a)</code>**是自右向左的结合方式，<font color=red>后自增自减优先级大于前自增自减</font></li>
+<li>在<code>&amp;&amp;和||之间</code>，<strong>优先级仅决定表达式的结合方式</strong>，而<strong>求值顺序由短路特性控制</strong></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a=<span class="number">1</span>,b=<span class="number">2</span>;</span><br><span class="line"><span class="type">int</span> c = a+++b;<span class="comment">//(a++)+b</span></span><br><span class="line">*p++;<span class="comment">//根据结合性确定了*(p++),但结合性并不代表执行顺序，该表达式仍是先解引用，再后使p指向下一个地址，而不是让p所指向的当前值加1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="执行路径"><a href="#执行路径" class="headerlink" title="执行路径"></a>执行路径</h4><p><strong>一、运算符优先级决定执行顺序</strong></p>
+<p>优先级高的运算符会先于优先级低的运算符进行计算</p>
+<p><strong>二、逻辑运算符的短路求值特性影响路径</strong></p>
+<p>在逻辑与<code>&amp;&amp;</code>和逻辑或<code>||</code>运算中，如果能够根据前面的操作数确定整个表达式的结果，则不会计算后面的操作数，这称为<strong>短路求值</strong></p>
+<p><strong>三、逗号运算符</strong></p>
+<p>在执行路径中，会按照从左到右的顺序依次计算每个表达式，<strong>但整个逗号表达式的值是最后一个表达式的值</strong></p>
+<hr>
+<p><strong>C语言中，除法运算符<code>&#39;/&#39;</code>，是重载的运算符，定义了两种不同的运算：</strong></p>
+<ol>
+<li>浮点除法：两个浮点数相除，商是浮点数</li>
+<li>整数除法：两个整数相除，商是整数</li>
+</ol>
+<p>浮点数和整数相除，整数自动转换为浮点数</p>
+<p><strong><font color=red>浮点数据不能参与求余运算（<code>%</code>）</font></strong></p>
+<p><strong><font color=red>负数参与求余运算，则是对两数的绝对值求余，符号与被除数相同</font></strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">12</span> % <span class="number">5</span> = <span class="number">2</span></span><br><span class="line"><span class="number">12</span> %(<span class="number">-5</span>)=<span class="number">2</span></span><br><span class="line">(<span class="number">-12</span>)% <span class="number">5</span>=<span class="number">-2</span></span><br><span class="line">(<span class="number">-12</span>)%(<span class="number">-5</span>)=<span class="number">-2</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="2-2不同类型混合运算"><a href="#2-2不同类型混合运算" class="headerlink" title="2.2不同类型混合运算"></a>2.2不同类型混合运算</h3><ol>
+<li>加减乘除运算中有<code>float</code>或<code>double</code>型，结果是 <code>double</code> 型</li>
+<li>如果 <code>int</code> 型与 <code>float</code> 或 <code>double</code> 型进行运算，其结果是 <code>double</code> 型</li>
+<li>字符<code>(char)</code>与<strong>整形</strong>数据进行运算，<strong>就是ASCII代码与整形进行计算</strong></li>
+<li>字符<code>(char)</code>与<strong>实型</strong>数据进行运算，<strong>则将ASCII代码转换为 <code>double</code> 型数据</strong></li>
+</ol>
+<p>例：<code>10+&#39;a&#39;+i*f-d/3</code></p>
+<ol>
+<li>进行<code>10+&#39;a&#39;</code>运算，因为<code>&#39;a&#39;</code>是97，则结果 107</li>
+<li>进行<code>i*f</code>运算，先将 i 和 f 都转换成 <code>float</code> 型，运算结果为 7.5</li>
+<li>后 <code>107+7.5</code> 先将 107 转换成单精度数，相加结果为 114.5，<code>float</code> 型</li>
+<li>进行 <code>d/3</code> 运算，先将3转换成 <code>double</code> 型，结果为 2.5，<code>double</code> 型</li>
+<li>将 <code>10+&#39;a&#39;+i*f</code> 的结果 114.5 与 <code>d/3</code> 的结果 2.5 相减， 结果为 112.0，<code>double</code> 型</li>
+</ol>
+<p>强制类型转换：<code>(类型)</code></p>
+<p>注意：被强制类型转换的数据，原数据不会发生变化，这只是一个中间数据</p>
+<h3 id="2-3sizeof运算符"><a href="#2-3sizeof运算符" class="headerlink" title="2.3sizeof运算符"></a>2.3sizeof运算符</h3><p><code>sizeof(变量名或类型)</code>：获取类型或变量的类型的大小</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">sizeof</span> a;</span><br><span class="line"><span class="keyword">sizeof</span>(a);</span><br><span class="line"><span class="keyword">sizeof</span>(a+<span class="number">10</span>);</span><br><span class="line"><span class="keyword">sizeof</span>(<span class="type">int</span>);</span><br></pre></td></tr></table></figure>
+
+<p>易错点：</p>
+<ol>
+<li><code>sizeof</code> 可直接空格加变量名，获得该变量的类型的大小</li>
+<li><code>sizeof</code> 并非函数，是在编译时获取类型大小，而函数是在执行时获得函数值的</li>
+<li><code>sizeof int</code> 是错误方法，<code>sizeof</code> 用于类型关键字必须加括号</li>
+<li><font color=red><code>sizeof</code> 只获取类型大小，括号内如果有表达式也不进行计算，如++a无效</font></li>
+</ol>
+<h3 id="2-4位运算符"><a href="#2-4位运算符" class="headerlink" title="2.4位运算符"></a>2.4位运算符</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>功能说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>~</td>
+<td>非运算符（单目运算符，逐位取反）</td>
+<td>~b</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>按位与运算符（全为1为1，有0为0）</td>
+<td>a&amp;b</td>
+</tr>
+<tr>
+<td>|</td>
+<td>按位或运算符（有1为1，全0为0）</td>
+<td>a|b</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位异或运算符（不相同为1，相同为0）</td>
+<td>a^b</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>位右移运算符（移一位除以2）</td>
+<td>a&lt;&lt;1</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>位左移运算符（移一位乘以2）</td>
+<td>b&gt;&gt;1</td>
+</tr>
+</tbody></table>
+<h2 id="3-C语句"><a href="#3-C语句" class="headerlink" title="3.C语句"></a>3.C语句</h2><h3 id="3-1-C语句的作用和分类"><a href="#3-1-C语句的作用和分类" class="headerlink" title="3.1 C语句的作用和分类"></a>3.1 C语句的作用和分类</h3><p>一个函数由<strong>执行部分</strong>和<strong>声明部分</strong>组成</p>
+<p>执行部分：由语句组成，向计算机系统发出操作指令，要求执行相应的操作，一个C语句经过编译后产生若干条机器指令</p>
+<p>声明部分：对有关数据的声明</p>
+<p>C语言分为：控制语句、函数调用语句、表达式语句、空语句、复合语句</p>
+<p><font color=red><strong>语句是一个表达式的最后加上一个分号构成</strong></font></p>
+<h4 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h4><p>C语言只有九种控制语句：</p>
+<ol>
+<li><code>if()…else…</code>     条件语句</li>
+<li><code>for()…</code>             循环语句</li>
+<li><code>while()…</code>         循环语句</li>
+<li><code>do…while()</code>     循环语句</li>
+<li><code>continue()</code>     终止本次循环语句</li>
+<li><code>break</code>               终止执行switch或循环语句</li>
+<li><code>switch</code>             多分支选择语句</li>
+<li><code>return</code>             从函数返回语句</li>
+<li><code>goto</code>                 转向语句</li>
+</ol>
+<h4 id="函数调用语句"><a href="#函数调用语句" class="headerlink" title="函数调用语句"></a>函数调用语句</h4><p>一个函数调用加一个分号构成</p>
+<h4 id="表达式语句"><a href="#表达式语句" class="headerlink" title="表达式语句"></a>表达式语句</h4><p>一个表达式加一个分号构成，典型的是赋值语句，也就是赋值表达式</p>
+<p><font color=red>一个表达式加分号就成了一个语句</font></p>
+<h4 id="空语句"><a href="#空语句" class="headerlink" title="空语句"></a>空语句</h4><p>空语句里只有一个分号</p>
+<h4 id="复合语句"><a href="#复合语句" class="headerlink" title="复合语句"></a>复合语句</h4><p>用<code>&#123;&#125;</code>将多个语句和声明括起来成为复合语句，又称<strong>语句块</strong></p>
+<h4 id="赋值语句"><a href="#赋值语句" class="headerlink" title="赋值语句"></a>赋值语句</h4><p> <strong>赋值运算符&#x3D;</strong></p>
+<p>将一个数据或表达式的值赋给一个变量</p>
+<p><strong>复合的赋值运算符</strong></p>
+<p>易错点：<code>x+=y%3——&gt;x=x+(y%3)</code></p>
+<p><strong>赋值过程中的类型转换</strong></p>
+<p>如果赋值运算符两侧的类型一致，则直接进行赋值</p>
+<p>如果两侧类型不一致，但都是基本类型时，进行类型转换（自动进行的）</p>
+<ol>
+<li><p>将浮点型赋给整形时，对浮点数取整，再赋予整型变量</p>
+</li>
+<li><p>将整形数据赋值给浮点型变量时，数值不变，但以浮点形式存储</p>
+</li>
+<li><p>将一个<code>double</code>类型数据赋给<code>float</code> 变量时，先将双精度数转换为单精度，即只取6~7位有效数字，远超过float范围时会显示<code>INF</code></p>
+<p>将一个<code>float</code>类型数据赋给<code>double</code>变量时，数值不变，有效数字扩展到15位</p>
+</li>
+<li><p>字符型变量赋值给整型变量时，将字符的ASCII代码赋给整型变量</p>
+</li>
+<li><p>将占一个字节多的整形数据赋给一个占字节少的整型变量时（如int赋给short或char），会直接截断，只保留低字节，多出来的消失</p>
+</li>
+</ol>
+<p>​        </p>
+<p><strong>赋值表达式和赋值语句</strong></p>
+<p>赋值语句&#x3D;赋值表达式+<code>;</code></p>
+<p>合法语句：<code>if((a=b)&gt;0) max=a;</code></p>
+<p>​	先将b赋给a，在判断a是否大于0</p>
+<p>不合法：<code>if((a=b;)&gt;0) max=a; </code></p>
+<hr>
+<h2 id="4-数据的输入输出"><a href="#4-数据的输入输出" class="headerlink" title="4.数据的输入输出"></a>4.数据的输入输出</h2><p>注意：</p>
+<ol>
+<li>C语言本身不提供输入输出语句，要在程序文件开头添加预处理指令</li>
+<li><font color=red>输入输出整数时，不应输入也不会输出进制的前缀（0或0x）</font></li>
+<li>字符可以用整数形式输出，整数也可以输出对应编码的字符</li>
+</ol>
+<h3 id="4-1-printf函数"><a href="#4-1-printf函数" class="headerlink" title="4.1 printf函数"></a>4.1 printf函数</h3><p><code>printf(&quot;%d,%c&quot;,a,i);</code></p>
+<ol>
+<li><strong>格式控制</strong>：是用双撇号括起来的一个字符串，称为<strong>格式控制字符串 或 格式字符串</strong>，包括两个信息<ul>
+<li><font color=blue>格式声明</font>：由<code>%</code>和<strong>格式字符</strong>组成</li>
+<li>普通字符：原样输出</li>
+</ul>
+</li>
+</ol>
+<h4 id="输出格式符"><a href="#输出格式符" class="headerlink" title="输出格式符"></a>输出格式符</h4><table>
+<thead>
+<tr>
+<th align="left">格式声明</th>
+<th align="left">格式声明含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">%d %i</td>
+<td align="left">有符号十进制整数 int</td>
+</tr>
+<tr>
+<td align="left">%u</td>
+<td align="left">无符号十进制整数 unsigned int</td>
+</tr>
+<tr>
+<td align="left">%c</td>
+<td align="left">以字符形式输出</td>
+</tr>
+<tr>
+<td align="left">%s</td>
+<td align="left">以字符串格式输出<br />%ms  m指定宽度（不足时左补空格，大于时按实际宽度输出）<br/>%-ms  左对齐，不足m时右补空格<br/>%m.ns 输出占m个字符位置，其中字符数最多n个,左补空格<br/>%-m.ns 同上，右补空格</td>
+</tr>
+<tr>
+<td align="left">%f</td>
+<td align="left">按实数格式输出，整数部分按实际位数输出，默认输出6位小数，四舍五入第七位<br />%m.nf  总位数m（含小数点），其中n位小数，n+1位四舍五入 <br/>%-m.nf  同上，左对齐</td>
+</tr>
+<tr>
+<td align="left">%%</td>
+<td align="left">打印字符%</td>
+</tr>
+<tr>
+<td align="left">%x %X</td>
+<td align="left">无符号十六进制整数</td>
+</tr>
+<tr>
+<td align="left">%o</td>
+<td align="left">无符号八进制整数</td>
+</tr>
+<tr>
+<td align="left">%e %E</td>
+<td align="left">浮点数科学计数法表示，如1e10 1E10</td>
+</tr>
+<tr>
+<td align="left">%g %G</td>
+<td align="left">浮点数如果指数部分大于4或者小于-4，则使用%e表示，否则使用%f表示</td>
+</tr>
+<tr>
+<td align="left">%p</td>
+<td align="left">指针的十六进制地址</td>
+</tr>
+<tr>
+<td align="left">%a %A</td>
+<td align="left">(C99&#x2F;C11)表示十六进制浮点数，10.0输出0x1.4p+3</td>
+</tr>
+</tbody></table>
+<h4 id="输出格式修饰符"><a href="#输出格式修饰符" class="headerlink" title="输出格式修饰符"></a>输出格式修饰符</h4><table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>类似于digits的功能，使用的时候需要搭配参数</td>
+</tr>
+<tr>
+<td>+</td>
+<td>非负数带正号，负数带负号</td>
+</tr>
+<tr>
+<td>-</td>
+<td>在定义了域宽时使输出左对齐</td>
+</tr>
+<tr>
+<td>空格</td>
+<td>非负数带空格，负数带负号</td>
+</tr>
+<tr>
+<td>#</td>
+<td>%#o显示八进制数前缀0<br/>%#x显示十六进制前缀0x<br/>浮点数显示小数点<br/>%#g显示小数点后的0 如0.1-&gt;0.100000 0.00001-&gt;1.00000e-05</td>
+</tr>
+<tr>
+<td>0</td>
+<td>如<code>%01d,%06ld</code><br />定义了域宽时用0填充而不是空格了<br/>若已经有负号的flag修饰符或给整数定义了精度则会被忽略</td>
+</tr>
+<tr>
+<td>digit(s)</td>
+<td>最小域宽，如%3d，12输出则为_12 (这里用_表示1个空格)</td>
+</tr>
+<tr>
+<td>.digit(s)</td>
+<td>精度，对于%e和%E表示小数点后数字的个数<br/>对于%g和%G表示符号位的最大位数<br/>对于%s表示打印字符的个数<br/>对于整数表示最少出现的数字，不足则补0<br/>只使用 . 时默认 . 之后为0，如 .f 表示 .0f</td>
+</tr>
+<tr>
+<td>L</td>
+<td>修饰浮点数格式符，指定输出一个long double浮点数</td>
+</tr>
+<tr>
+<td>h</td>
+<td>修饰整数格式符，指定输出一个short或unsigned short整数</td>
+</tr>
+<tr>
+<td>hh</td>
+<td>修饰整数格式符，指定输出一个char或unsigned char整数</td>
+</tr>
+<tr>
+<td>l(L小写)</td>
+<td>修饰整数格式符，指定输出一个long int或unsigned long int整数</td>
+</tr>
+<tr>
+<td>ll(L小写)</td>
+<td>(C99)修饰整数格式符，指定输出一个long long int或unsigned long long int整数</td>
+</tr>
+<tr>
+<td>j</td>
+<td>修饰整数格式符，指定输出intmax_t或uintmax_t类型的整数，这些类型定义在stdint.h中</td>
+</tr>
+<tr>
+<td>t</td>
+<td>(C99)修饰整数格式符，指定输出一个ptrdiff_t类型的整数，这个类型用于对比两个指针的不同</td>
+</tr>
+<tr>
+<td>z</td>
+<td>(C99)修饰整数格式符，指定输出一个size_t整数，这个类型由sizeof返回</td>
+</tr>
+</tbody></table>
+<p><strong><code>%e</code>输出举例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> a = <span class="number">12345.0</span>;<span class="type">float</span> b = <span class="number">0.8</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%e\n%e&quot;</span>,a,b);		<span class="comment">//输出1.2345e+004	8.000000e-001</span></span><br></pre></td></tr></table></figure>
+
+<p>一、1.234500e+004&#x3D;1.234500*($10^4$)&#x3D;12345</p>
+<p>二、8.000000e-001&#x3D;8*($10^{-1}$)&#x3D;8*0.1</p>
+<p><strong><code>*</code>使用举例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//%*d等，*号可以用来表示输出的域宽，需要自己给</span></span><br><span class="line"><span class="type">int</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%*d&quot;</span>,<span class="number">3</span>,a);<span class="comment">//指定输出域宽为3，不足左补空格</span></span><br><span class="line"><span class="comment">//%.*f，*号可以表示浮点数的精度</span></span><br><span class="line"><span class="type">float</span> a=<span class="number">1.234</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%.*f&quot;</span>,<span class="number">2</span>,a);<span class="comment">//指定输出两位小数</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>总的来说，*号可以替代格式修饰符中使用的数字，当个占位符，但必须在后面的变量列表里，按顺序给出具体的值或变量值</strong></p>
+<p><strong>注意</strong>：</p>
+<ol>
+<li>可以指定<strong>域宽</strong>，即在%和格式字符中间加上列数<code>%5d</code></li>
+<li>通常在有格式字符o和x按八进制和十六进制形式输出整数时，在数值前不出现0和0x，可在%和格式字符间插入#来实现。<br>例：printf（“%o，%#o，%x，%#x\n”，10，10，10，10）；<br>输出：12，012，a，0xa</li>
+<li>指定输出宽度的同时指定左对齐可在宽度前插入“-”来实现。</li>
+</ol>
+<h3 id="4-2-scanf函数"><a href="#4-2-scanf函数" class="headerlink" title="4.2 scanf函数"></a>4.2 scanf函数</h3><p>scanf函数的格式字符和printf函数基本相同</p>
+<p><strong>注意：</strong></p>
+<ol>
+<li>scanf函数中的格式控制后面应当是<strong>变量地址</strong>，而不是变量名</li>
+<li>格式控制字符串中的普通字符都要打出来</li>
+<li>**再用<code>%c</code>格式声明时，空格字符和转义字符中的字符都能作为有效字符输入 **</li>
+<li>在输入数据时，如输入空格、回车、Tab或非法字符（不属于数值的字符），认为该数据结束</li>
+</ol>
+<h4 id="输入格式修饰符"><a href="#输入格式修饰符" class="headerlink" title="输入格式修饰符"></a>输入格式修饰符</h4><table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>抑制分配，或者说跳过该输入项</td>
+</tr>
+<tr>
+<td>digit(s)</td>
+<td>最大域宽，在达到最大域宽或遇到空白符时停止输入</td>
+</tr>
+<tr>
+<td>hh</td>
+<td>读取一个char或unsigned char<br/>如%hhd、%hhu</td>
+</tr>
+<tr>
+<td>ll(L小写)</td>
+<td>读取一个long long或unsigned long long<br/>如%lld、%llu</td>
+</tr>
+<tr>
+<td>h l L</td>
+<td>%hd和%hi表示读取一个short int<br/>%ho、%hx和%hu表示读取一个unsigned short int<br/>%ld和%li表示读取一个long<br/>%lo、%lx和%lu表示读取一个unsigned long<br/>%le、%lf和%lg表示读取一个double<br/>%Le、%Lf和%Lg表示读取一个long double<br/>如果没有使用这些修饰符%d %i %o %x表示int，%e、%f和%g表示float<br/></td>
+</tr>
+<tr>
+<td>j</td>
+<td>(C99)当修饰一个整数格式符时表示使用intmax_t或uintmax_t类型</td>
+</tr>
+<tr>
+<td>z</td>
+<td>(C99)当修饰一个整数格式符时表示使用sizeof的返回类型</td>
+</tr>
+<tr>
+<td>t</td>
+<td>(C99)当修饰一个整数格式符时表示使用ptrdiff_t类型</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong><font color=red><code>scanf</code>停止的标志：</font></strong></p>
+<ol>
+<li>遇空格符、回车符、制表符</li>
+<li>达到输入的域宽</li>
+<li>遇到不能解析的字符</li>
+</ol>
+<hr>
+<p><strong>注意：</strong></p>
+<ol>
+<li>连续输入多个整数或浮点数时，数据之间用一个或多个空格、换行符、制表符分隔</li>
+<li><strong><font color=red>输入字符%c时，空格和换行符也会算进去（读取字符串%s时不会）</font></strong></li>
+<li>指定了域宽后，输入多个整数时，不必隔开</li>
+<li><font color=red>scanf函数每次开始读取，会跳过所有的空白字符，直到遇到第一个非空白字符的时候才开始读取</font>(读取<strong>除字符除外</strong>)</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a[<span class="number">10</span>];</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,a);</span><br><span class="line"><span class="comment">//键入12345</span></span><br></pre></td></tr></table></figure>
+
+<p>上述代码中，当我键入”12345”回车后，首先”12345\n”会进入输入缓冲区，然后scanf读入”12345”，回车”\n”被留在了缓冲区</p>
+<p>如果下面调用了<code>getchar()</code>函数，那回车就会被读入，通常要避免这种情况，这时我们可以在scanf读取完12345后立刻调用getchar函数将 ‘ \n ‘读走</p>
+<h4 id="scanf空格注意点"><a href="#scanf空格注意点" class="headerlink" title="scanf空格注意点"></a>scanf空格注意点</h4><p>scanf在双引号里碰到<strong>空格</strong>时，会触发一个机制，会开始顺序扫描输入缓冲区，跳过所有空白字符（回车，空格，制表等），直到扫描到非空白字符，才会继续输入</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%c %c&quot;</span>,&amp;a,&amp;b);</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中，两个%c格式声明之间有一个空格，这时，由于scanf每次读取都会跳过所有的空白字符（回车，空格，制表），所以当输入第一个字符后，如果一直输入空白字符，则程序不会停止，直到输入第二个非空白字符为止</p>
+<h3 id="4-3-字符输入输出函数"><a href="#4-3-字符输入输出函数" class="headerlink" title="4.3 字符输入输出函数"></a>4.3 字符输入输出函数</h3><h4 id="putchar函数"><a href="#putchar函数" class="headerlink" title="putchar函数"></a>putchar函数</h4><p><code>putchar(c)</code>：输出c字符，如果c是整数（0~127），则输出其ASCII码对应的字符</p>
+<p>其中c可以是字符常量、整形常量、字符变量或整型变量（值在ASCII码范围内）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">putchar</span>(<span class="string">&#x27;t&#x27;</span><span class="number">-32</span>); <span class="comment">//输出T</span></span><br><span class="line"><span class="built_in">putchar</span>(<span class="string">&#x27;T&#x27;</span>+<span class="number">32</span>); <span class="comment">//输出t</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="getchar函数"><a href="#getchar函数" class="headerlink" title="getchar函数"></a>getchar函数</h4><p><strong><code>getchar</code>的值是int型</strong></p>
+<p>在用键盘输入时，不是敲一个字符就立即送到计算机中，而是存在键盘的缓冲器里，按了Enter键后才送入计算机中，如果输入了多个字符，那他就只读一个，其他的在缓冲区里，如果程序由调用getchar了，就从里面再拿一个</p>
+<p><strong>回车键和空格也是可以作为一个字符的，可以被这两个函数读取</strong></p>
+<h3 id="4-4-字符串输入输出函数"><a href="#4-4-字符串输入输出函数" class="headerlink" title="4.4 字符串输入输出函数"></a>4.4 字符串输入输出函数</h3><h4 id="gets函数"><a href="#gets函数" class="headerlink" title="gets函数"></a>gets函数</h4><p><code>char* gets(char*s)</code>：从键盘输入，以回车结束的字符串放入数组中，并自动加<code>&#39;\0&#39;</code></p>
+<ol>
+<li>输入串长度应小于字符数组维数</li>
+<li>与scanf不同，gets函数并不以空格作为字符串输入结束的标志</li>
+</ol>
+<h4 id="puts函数"><a href="#puts函数" class="headerlink" title="puts函数"></a>puts函数</h4><p><code>int puts(const char*s)</code>：向显示器输出字符串（输出完后自动换行）</p>
+<p>字符数组必须以<code>&#39;\0&#39;</code>结束，否则可能会导致未定义行为</p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/4%20%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/">C笔记之基本介绍</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/3%20%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/">C笔记之基本介绍</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Xikan</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="toc-text">C语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%8E%B0%E5%BD%A2%E5%BC%8F"><span class="toc-text">1.数据的表现形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E5%B8%B8%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F"><span class="toc-text">1.1常量和变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E6%A0%87%E8%AF%86%E7%AC%A6%E5%92%8C%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">1.2标识符和关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">关键字</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BF%90%E7%AE%97"><span class="toc-text">1.3数据的运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%88%B6%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">数制基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%88%B6%E8%BD%AC%E6%8D%A2-%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">数制转换 （重点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="toc-text">原码、反码、补码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.4数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1%E6%95%B4%E5%BD%A2%E6%95%B0%E6%8D%AE"><span class="toc-text">1.4.1整形数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%EF%BC%88%E4%B9%9F%E7%AE%97%E6%95%B4%E5%9E%8B%EF%BC%89"><span class="toc-text">1.4.2字符型数据（也算整型）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3%E6%B5%AE%E7%82%B9%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="toc-text">1.4.3浮点型数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-4%E7%A1%AE%E5%AE%9A%E5%B8%B8%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.4.4确定常量类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">2.运算符和表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">2.1运算符的优先级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E8%B7%AF%E5%BE%84"><span class="toc-text">执行路径</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E6%B7%B7%E5%90%88%E8%BF%90%E7%AE%97"><span class="toc-text">2.2不同类型混合运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3sizeof%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">2.3sizeof运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">2.4位运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-C%E8%AF%AD%E5%8F%A5"><span class="toc-text">3.C语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-C%E8%AF%AD%E5%8F%A5%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%88%86%E7%B1%BB"><span class="toc-text">3.1 C语句的作用和分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="toc-text">控制语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%AF%AD%E5%8F%A5"><span class="toc-text">函数调用语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E5%8F%A5"><span class="toc-text">表达式语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%AF%AD%E5%8F%A5"><span class="toc-text">空语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E8%AF%AD%E5%8F%A5"><span class="toc-text">复合语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5"><span class="toc-text">赋值语句</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text">4.数据的输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-printf%E5%87%BD%E6%95%B0"><span class="toc-text">4.1 printf函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E7%AC%A6"><span class="toc-text">输出格式符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">输出格式修饰符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-scanf%E5%87%BD%E6%95%B0"><span class="toc-text">4.2 scanf函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">输入格式修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#scanf%E7%A9%BA%E6%A0%BC%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-text">scanf空格注意点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0"><span class="toc-text">4.3 字符输入输出函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#putchar%E5%87%BD%E6%95%B0"><span class="toc-text">putchar函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getchar%E5%87%BD%E6%95%B0"><span class="toc-text">getchar函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0"><span class="toc-text">4.4 字符串输入输出函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gets%E5%87%BD%E6%95%B0"><span class="toc-text">gets函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#puts%E5%87%BD%E6%95%B0"><span class="toc-text">puts函数</span></a></li></ol></li></ol></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

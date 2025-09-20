@@ -1,0 +1,1130 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>C笔记之基本介绍 - Xikan的博客</title>
+
+  
+    <meta name="description" content="对文件的输入输出文件什么是文件：存储在外部介质上数据的集合  程序文件：源程序文件(.c)、目标文件(.obj)、可执行文件(.exe) 数据文件：文件的内容是供程序运行时读写的数据  输入输出是数据传送的过程，又称为流，也叫“数据流”，流表示了信息从 源 到 目的 端的流动 文件分类：  数据文件分为：ASCII文件（文本文件）、二进制文件（映像文件）  文件缓冲区ANSI C标准采用**“缓冲">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C笔记之基本介绍">
+<meta property="og:url" content="http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
+<meta property="og:site_name" content="Xikan的博客">
+<meta property="og:description" content="对文件的输入输出文件什么是文件：存储在外部介质上数据的集合  程序文件：源程序文件(.c)、目标文件(.obj)、可执行文件(.exe) 数据文件：文件的内容是供程序运行时读写的数据  输入输出是数据传送的过程，又称为流，也叫“数据流”，流表示了信息从 源 到 目的 端的流动 文件分类：  数据文件分为：ASCII文件（文本文件）、二进制文件（映像文件）  文件缓冲区ANSI C标准采用**“缓冲">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/head.png">
+<meta property="article:published_time" content="2025-09-20T14:25:16.000Z">
+<meta property="article:modified_time" content="2025-09-20T14:59:59.764Z">
+<meta property="article:author" content="Xikan">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/head.png">
+  
+  
+  
+  <meta name="keywords" content="C语言">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+    <link rel="shortcut icon" href="/earth.ico">
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Xikan","sameAs":[],"image":"/images/head.png"},"dateCreated":"2025-09-20T22:25:16+08:00","dateModified":"2025-09-20T22:59:59+08:00","datePublished":"2025-09-20T22:25:16+08:00","description":"","headline":"C笔记之基本介绍","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"},"publisher":{"@type":"Organization","name":"Xikan","sameAs":[],"image":"/images/head.png","logo":{"@type":"ImageObject","url":"/images/head.png"}},"url":"http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/","keywords":"C语言","image":[]}</script>
+  
+</head>
+<body>
+
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/head.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Xikan的博客</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/1%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%B3/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/10%20%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/8%20%E7%BB%93%E6%9E%84%E4%BD%93/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/7%20%E6%8C%87%E9%92%88/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/6%20%E5%87%BD%E6%95%B0/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/5%20%E6%95%B0%E7%BB%84/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/4%20%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/3%20%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/"><span class="title">C笔记之基本介绍</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-09-20T14:25:16.000Z">2025-09-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-09-20T14:59:59.764Z">2025-09-20</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>C笔记之基本介绍</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="对文件的输入输出"><a href="#对文件的输入输出" class="headerlink" title="对文件的输入输出"></a>对文件的输入输出</h1><h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><p><strong>什么是文件：<font color=red>存储在外部介质上数据的集合</font></strong></p>
+<ol>
+<li>程序文件：源程序文件<code>(.c)</code>、目标文件<code>(.obj)</code>、可执行文件<code>(.exe)</code></li>
+<li>数据文件：文件的内容是供程序运行时读写的数据</li>
+</ol>
+<p>输入输出是数据传送的过程，又称为<strong>流</strong>，也叫“<strong>数据流</strong>”，流表示了信息从 <strong>源</strong> 到 <strong>目的</strong> 端的流动</p>
+<p><strong>文件分类：</strong></p>
+<ol>
+<li>数据文件分为：<font color=red>ASCII文件（文本文件）、二进制文件（映像文件）</font></li>
+</ol>
+<h2 id="文件缓冲区"><a href="#文件缓冲区" class="headerlink" title="文件缓冲区"></a>文件缓冲区</h2><p>ANSI C标准采用**“缓冲文件系统”**处理数据文件</p>
+<p>缓冲文件系统：系统自动地在内存区为程序中每一个正在使用的文件开辟一个<strong>文件缓冲区</strong></p>
+<ol>
+<li>从内存向磁盘输出数据必须先送到内存中的缓冲区，装满缓冲区后才一起送到磁盘去</li>
+<li>从磁盘向计算机读入数据，则一次从磁盘文件将一批数据输入到内存缓冲区（充满缓冲区），然后再从缓冲区逐个的将数据送到程序数据区（给程序变量）<strong>为了节省存取时间，提高效率</strong></li>
+<li>每个文件在内存中<strong>只有一个缓冲区</strong>，在向文件输出数据时，它就作为输出缓冲区，在从文件输入数据时，他就作为输入缓冲区</li>
+</ol>
+<h2 id="文件类型指针"><a href="#文件类型指针" class="headerlink" title="文件类型指针"></a>文件类型指针</h2><p><strong>文件类型指针</strong> 简称 <strong>文件指针</strong></p>
+<p>每个被使用的文件都在内存中开辟一个相应的文件信息区，用来存放文件的有关信息（如文件名、文件状态、文件当前位置等）</p>
+<p>这些信息是保存在一个<strong>结构体变量</strong>中的，该结构体类型是由系统声明的，叫<font color=red><strong>FILE</strong></font></p>
+<p><strong>C编译环境提供的stdio.h头文件中有以下文件类型声明：</strong>（知道即可）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">short</span> level;			<span class="comment">//缓冲区“满”或“空”的程度</span></span><br><span class="line">    <span class="type">unsigned</span> flags;			<span class="comment">//文件状态标志</span></span><br><span class="line">    <span class="type">char</span> fd;				<span class="comment">//文件描述符</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> hold;		<span class="comment">//如缓冲区无内容不读取字符</span></span><br><span class="line">    <span class="type">short</span> bsize;			<span class="comment">//缓冲区的大小</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> * buffer;	<span class="comment">//数据缓冲区的位置</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> * curp;	<span class="comment">//文件位置标记指针当前的指向</span></span><br><span class="line">    <span class="type">unsigned</span> istemp;		<span class="comment">//临时文件指示器</span></span><br><span class="line">    <span class="type">short</span> token;			<span class="comment">//用于有效性检查</span></span><br><span class="line">&#125;FILE;</span><br></pre></td></tr></table></figure>
+
+<p>FILE结构体类型的信息包含在头文件**&lt;stdio.h&gt;**中，程序中可以直接使用FILE类型名定义变量</p>
+<p>一般使用指向FILE类型的变量的指针变量，来引用这些FILE类型变量</p>
+<p><code>FILE * fp;</code></p>
+<p>fp指向某个文件的文件信息区（是一个结构体变量），通过该文件信息区中的信息就能够访问该文件。</p>
+<p>通常将这种只想文件信息区的指针变量简称为<strong>指向文件的指针变量</strong>（指向<strong>内存中的</strong>文件信息区的开头，不是外部介质上的数据文件开头）</p>
+<h2 id="常用输入输出函数归纳"><a href="#常用输入输出函数归纳" class="headerlink" title="常用输入输出函数归纳"></a>常用输入输出函数归纳</h2><h4 id="EOF（End-Of-File）"><a href="#EOF（End-Of-File）" class="headerlink" title="EOF（End Of File）"></a>EOF（End Of File）</h4><p>名称是文件结束标志，定义为 -1（不是ASCII码值为-1），可以通过 Ctrl+Z 直接键入</p>
+<p>EOF常常用于判断是否到达了文件末尾或输入流末尾</p>
+<blockquote>
+<p>EOF并不是一个实际的字符或整数值，而是一个特殊的标志，用于指示文件结束或输入流结束的状态</p>
+</blockquote>
+<h4 id="scanf函数"><a href="#scanf函数" class="headerlink" title="scanf函数"></a>scanf函数</h4><p>scanf函数是有返回值的，一般来说，它的返回值是成功读取的元素个数。但当遭遇读取失败时，它的返回值便是 -1 （也就是它自己返回一个EOF）</p>
+<p>而若是一个元素都还没成功读入的时候就遇到了读取失败或EOF，那它直接就会返回-1，不管后面再输入了什么</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>((<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b)) != EOF)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="getchar函数"><a href="#getchar函数" class="headerlink" title="getchar函数"></a>getchar函数</h4><p>从标准输入（键盘）读取一个字符，并返回其ASCII值（作为整数），<strong><code>getchar</code>读取输入缓冲区中的下一个字符，并在读取成功后将其从缓冲区中删除</strong></p>
+<p>**返回值：**int型，<strong>如果发生错误或达到输入的末尾，<code>getchar</code>返回特殊值EOF</strong></p>
+<h4 id="putchar函数"><a href="#putchar函数" class="headerlink" title="putchar函数"></a>putchar函数</h4><p>将一个字符输出到标准输出（控制台），</p>
+<p><strong>参数：以<code>int</code>型传递，但只使用最低有效的8位，因此实际上被视为<code>char</code>类型处理</strong></p>
+<p>**返回值：**将写入的字符作为 <code>unsigned char</code>类型返回，如果发生错误，则返回EOF</p>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><font color=red>注意：</font></h4><p><strong>scanf和getchar在读取数据时，是从缓冲区内读取数据，而缓冲区位于键盘和scanf，getchar之间</strong></p>
+<h4 id="gets函数"><a href="#gets函数" class="headerlink" title="gets函数"></a>gets函数</h4><p>函数原型：<strong><code>char* gets(char* str);</code></strong></p>
+<p>从输入缓冲区中读取一个字符串存储到字符指针变量 str 所指向的内存空间</p>
+<p>注意点：</p>
+<ol>
+<li><strong>可以输入带空格的字符串</strong></li>
+<li>使用gets时，系统会将最后的回车换行符从缓冲区中取出来，然后丢弃，不需要额外清空缓冲区了</li>
+</ol>
+<h4 id="puts函数"><a href="#puts函数" class="headerlink" title="puts函数"></a>puts函数</h4><p>函数原型：<strong><code>int puts(const char* str);</code></strong></p>
+<p>正常打印返回0，打印异常返回EOF</p>
+<h2 id="打开、关闭文件"><a href="#打开、关闭文件" class="headerlink" title="打开、关闭文件"></a>打开、关闭文件</h2><p>打开：为文件建立相应的<strong>信息区</strong>（用来存放有关文件的信息）和<strong>文件缓冲区</strong>（用来暂时存放输入输出的数据）</p>
+<h4 id="用fopen函数打开数据文件"><a href="#用fopen函数打开数据文件" class="headerlink" title="用fopen函数打开数据文件"></a>用fopen函数打开数据文件</h4><p><strong><code>fopen(文件名, 使用文件方式);</code></strong></p>
+<p>返回一个FILE指针（文件指针），如果打开失败返回NULL</p>
+<table>
+<thead>
+<tr>
+<th align="center">文件使用方式</th>
+<th align="center">含义</th>
+<th align="center">如果指定文件不存在</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">“r”（只读）</td>
+<td align="center">为了输入数据，打开一个已经存在的文本文件（从文件获取）</td>
+<td align="center">出错</td>
+</tr>
+<tr>
+<td align="center">“w”（只写）</td>
+<td align="center">为了输出数据，打开一个文本文件（向文件输出）</td>
+<td align="center">建立一个新的文件</td>
+</tr>
+<tr>
+<td align="center">“a”（追加）</td>
+<td align="center">向文本文件尾添加数据</td>
+<td align="center">出错</td>
+</tr>
+<tr>
+<td align="center">“rb”（只读）</td>
+<td align="center">为了输入数据，打开一个二进制文件</td>
+<td align="center">出错</td>
+</tr>
+<tr>
+<td align="center">“wb”（只写）</td>
+<td align="center">为了输出文件，打开一个二进制文件</td>
+<td align="center">建立一个新的文件</td>
+</tr>
+<tr>
+<td align="center">“ab”（追加）</td>
+<td align="center">向一个二进制文件尾添加数据</td>
+<td align="center">出错</td>
+</tr>
+<tr>
+<td align="center">“r+”（读写）</td>
+<td align="center">为了读和写，打开一个文本文件</td>
+<td align="center">出错</td>
+</tr>
+<tr>
+<td align="center">“w+”（读写）</td>
+<td align="center">为了读和写，创建一个新的文本文件</td>
+<td align="center">建立一个新的文件</td>
+</tr>
+<tr>
+<td align="center">“a+”（读写）</td>
+<td align="center">打开一个文件，在文件末尾读进行读写</td>
+<td align="center">建立一个新的文件</td>
+</tr>
+<tr>
+<td align="center">“rb+”（读写）</td>
+<td align="center">为了读和写打开一个二进制文件</td>
+<td align="center">出错</td>
+</tr>
+<tr>
+<td align="center">“wb+”（读写）</td>
+<td align="center">为了读和写，新建一个二进制文本文件</td>
+<td align="center">建立一个新的文件</td>
+</tr>
+<tr>
+<td align="center">“ab+”（读写）</td>
+<td align="center">打开一个二进制文件，在文件末尾进行读和写</td>
+<td align="center">建立一个新的文件</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>如果使用任何一种 “w” 模式打开一个现有文件，该文件的内容会被删除，以便程序在一个空白文件中开始操作</p>
+<p>如果不希望删除原有数据，则应用”a”方式打开，打开文件时，文件读写位置标记到文件末尾</p>
+<p>用”r+”、”w+”、”a+”方式打开的文件既可输入也可输出</p>
+<ol>
+<li>“r+”：该文件应该已经存在，</li>
+<li>“w+”：建立一个新文件，先往里写，然后可以读里面的数据</li>
+<li>“a+”：原来的文件不被删去，文件读写位置标记到文件末尾，可添加可读</li>
+</ol>
+</blockquote>
+<p><strong>常用的文件读取方式：（加上了一个判断）</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FILE *fp;</span><br><span class="line"><span class="keyword">if</span>((fp=fopen(<span class="string">&quot;file1&quot;</span>,<span class="string">&quot;r&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;cannot open this file\n&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);	<span class="comment">//关闭所有文件，终止正在进行的程序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>**文件使用方式中，带b和不带b的区别：**b表示二进制方式，带不带只有对换行的处理的区别</p>
+<ul>
+<li>如果使用文本文件并用”w”方式打开：在向文件输出时，遇到换行符<code>&#39;\n&#39;</code>时，系统就将其转换为<code>&#39;\r&#39;</code>和<code>&#39;\n&#39;</code>两个字符</li>
+<li>如果使用文本文件并用”r”方式打开：遇到<code>&#39;\r&#39;</code>和<code>&#39;\n&#39;</code>两个连续的字符是，就转换为<code>&#39;\n&#39;</code>一个字</li>
+<li>如果用”wb”方式，并不代表着把内存中的文本文件的数据自动转换成二进制形式存储，<strong>输出的数据形式是由程序中采用什么读写语句决定的</strong></li>
+<li>根据需要，如果需要对回车符进行转换的，就用”w”，不需要就用”wb”，带b是通知编译系统，不必进行回车符的转换，如果是文本文件（显然需要转换），就用”w”方式</li>
+<li><strong>理论上说，文本文件可以用”wb”方式打开，但没必要</strong></li>
+</ul>
+<hr>
+<p><strong>程序中可以使用3个标准的 流文件：<font color=red>标准输入流(stdin)，标准输出流(stdout)，标准出错输出流(stderr)</font></strong></p>
+<p>程序开始运行时，自动打开这3个标准流文件（不用手动打开），其中<code>stdin,stdout,stderr</code>是对应的文件指针变量，可通过这三个指针变量对其进行操作</p>
+<h2 id="用fclose函数关闭文件"><a href="#用fclose函数关闭文件" class="headerlink" title="用fclose函数关闭文件"></a>用fclose函数关闭文件</h2><p>标准形式：<code>fclose(文件指针);</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FILE *fp=fopen(<span class="string">&quot;file1&quot;</span>,<span class="string">&quot;r&quot;</span>);</span><br><span class="line">fclose(fp);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不关闭文件就结束程序运行，数据会丢失</li>
+<li>fclose先把缓冲区中的数据输出到磁盘文件，然后才撤销文件信息区</li>
+</ul>
+<h2 id="顺序读写数据文件"><a href="#顺序读写数据文件" class="headerlink" title="顺序读写数据文件"></a>顺序读写数据文件</h2><h4 id="向文件读写字符"><a href="#向文件读写字符" class="headerlink" title="向文件读写字符"></a>向文件读写字符</h4><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>调用形式</th>
+<th>功    能</th>
+<th>返    回    值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>fgetc</code></td>
+<td><code>fgetc(fp)</code></td>
+<td>从fp指向的文件读入一个字符</td>
+<td>读成功，带回所读字符</td>
+</tr>
+<tr>
+<td><code>fputc</code></td>
+<td><code>fputc(ch,fp)</code></td>
+<td>把字符ch写到文件指针变量fp所指向的文件中</td>
+<td>输出成功，返回值就是输出的字符</td>
+</tr>
+</tbody></table>
+<p>失败则<strong>返回文件标志EOF (即$-1$)</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fgetc</span><span class="params">(FILE* stream)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>例：从键盘输入一些字符，并逐个送到磁盘中，直到输入“#”为止</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    FILE* fp;</span><br><span class="line">    <span class="type">char</span> ch,filename[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入所用的文件名:&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,filename);</span><br><span class="line">    getchar();</span><br><span class="line">    <span class="keyword">if</span>((fp=fopen(filename,<span class="string">&quot;w&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;cannot open file\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入一个准备存储到磁盘的字符串（以#结束）：&quot;</span>);</span><br><span class="line">    ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch!=<span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        fputc(ch,fp);</span><br><span class="line">        <span class="built_in">putchar</span>(ch);</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(fp);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="number">10</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li>用fopen打开一个“只写”文件，如果成功，函数返回值是该文件所建立的信息区的起始地址</li>
+<li>exit函数需要&lt;stdlib.h&gt;头文件</li>
+<li>第七行输入文件名后回车，回车仍在缓冲区中，所以用一个getchar将它读出来消化掉，避免回车符被当成有效数据</li>
+</ol>
+<p><strong>例2：将一个磁盘文件中的信息复制到另一个磁盘文件中，file1.dat-&gt;file2.dat</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    FILE* in,* out;</span><br><span class="line">    <span class="type">char</span> ch,infile[<span class="number">10</span>],outfile[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;输入文件的名字：&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,infile);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;输入输出文件的名字：&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,outfile);</span><br><span class="line">    <span class="keyword">if</span>((in=fopen(infile,<span class="string">&quot;r&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;无法打开此文件\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((out=fopen(outfile,<span class="string">&quot;w&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;无法打开此文件\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    ch=fgetc(in);</span><br><span class="line">    <span class="keyword">while</span>(!feof(in))</span><br><span class="line">    &#123;</span><br><span class="line">        fputc(ch,out);</span><br><span class="line">        <span class="built_in">putchar</span>(ch);</span><br><span class="line">        ch=fgetc(in);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="number">10</span>);</span><br><span class="line">    fclose(in);</span><br><span class="line">    fclose(out);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="向文件读写字符串"><a href="#向文件读写字符串" class="headerlink" title="向文件读写字符串"></a>向文件读写字符串</h4><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">调用形式</th>
+<th align="center">功    能</th>
+<th align="center">返    回    值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">fgets</td>
+<td align="center">fgets(str,n,fp)</td>
+<td align="center">从fp指向的文件读入一个长度为(n-1)的字符串<br />存放到字符数组str中</td>
+<td align="center">读成功，返回地址str，失败返回NULL</td>
+</tr>
+<tr>
+<td align="center">fputs</td>
+<td align="center">fputs(str,fp)</td>
+<td align="center">把str所指向的字符串写到文件指针变量fp所指向的文件中</td>
+<td align="center">输出成功，返回0,；否则返回非0值</td>
+</tr>
+</tbody></table>
+<p><strong><code>fgets</code>函数：</strong></p>
+<p>函数原型：<strong><code>char* fgets(char* str, int n, FILE* p);</code></strong></p>
+<p>注意点：</p>
+<ul>
+<li>该函数只会得到n-1个字符，因为要在最后加一个<code>&#39;\0&#39;</code></li>
+<li>遇到<code>&#39;\n&#39;</code>、EOF，读入即结束，<code>&#39;\n&#39;</code>也作为一个字符输入</li>
+<li>函数成功，返回字符数组的首元素地址</li>
+</ul>
+<p><strong><code>fputs</code>函数：</strong></p>
+<p>函数原型：<strong><code>int fputs(char* str, FILE* fp);</code></strong></p>
+<p>注意点：</p>
+<ul>
+<li>函数中第一个参数可以是字符串常量、字符数组、字符型指针</li>
+<li>字符串末尾的’<code>\0</code>‘不输出</li>
+<li>成功返回0，失败返回EOF（-1）</li>
+</ul>
+<p>fgets和fputs和gets、puts很像，但gets&#x2F;puts是以终端为读写对象，而fgets&#x2F;fputs函数以指定的文件作为读写对象</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    FILE* fp;</span><br><span class="line">    <span class="type">char</span> str[<span class="number">3</span>][<span class="number">10</span>],temp[<span class="number">10</span>];</span><br><span class="line">    <span class="type">int</span> i,j,k,n=<span class="number">3</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Enter strings:\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        k=i;</span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;n;j++)</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">strcmp</span>(str[k],str[j])&gt;<span class="number">0</span>)k=j;</span><br><span class="line">        <span class="keyword">if</span>(k!=i)&#123;</span><br><span class="line">            <span class="built_in">strcpy</span>(temp,str[i]);</span><br><span class="line">            <span class="built_in">strcpy</span>(str[i],str[k]);</span><br><span class="line">            <span class="built_in">strcpy</span>(str[k],temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((fp=fopen(<span class="string">&quot;C:\test.txt&quot;</span>,<span class="string">&quot;w&quot;</span>))==<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;文件无法打开\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\nThe new sequence:\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">fputs</span>(str[i],fp);<span class="built_in">fputs</span>(<span class="string">&quot;\n&quot;</span>,fp);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,str[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="用格式化方式读写文本文件"><a href="#用格式化方式读写文本文件" class="headerlink" title="用格式化方式读写文本文件"></a>用格式化方式读写文本文件</h4><p>与<code>printf</code>、<code>scanf</code>相同，格式化输出<code>fprintf</code>、<code>fscanf</code>只是多了个f，前两个作用对象是终端，后两个作用对象是文件</p>
+<p><strong><code>int fprintf(文件指针,格式字符串,输出表列);</code></strong></p>
+<p><strong><code>int fscanf(文件指针,格式字符串,输出表列);</code></strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">fprintf</span>(fp,<span class="string">&quot;%d,%f&quot;</span>,a,b);</span><br></pre></td></tr></table></figure>
+
+<p><code>fprintf()</code>的返回值是输出的字符数,发生错误时返回一个负值</p>
+<h4 id="用二进制方式向文件读写一组数据"><a href="#用二进制方式向文件读写一组数据" class="headerlink" title="用二进制方式向文件读写一组数据"></a>用二进制方式向文件读写一组数据</h4><p>一次输入一组数据，可以用<code>fread</code>函数从文件中读一个数据块，用<code>fwrite</code>函数向文件写一个数据块，<strong>读写时是以二进制形式进行的</strong></p>
+<p><strong><code>fread(buffer,size,count,fp);</code></strong></p>
+<p><strong><code>fwrite(buffer,size,count,fp);</code></strong></p>
+<ul>
+<li><code>buffer</code>：指向存储读取数据的缓冲区的指针</li>
+<li><code>size</code>：要读写的字节数</li>
+<li><code>count</code>：要读写多少个数据项（每个数据项长度为<code>size</code>）</li>
+<li><code>fp</code>：FILE类型指针</li>
+</ul>
+<p><code>fread()</code>和<code>fwrite()</code>主要用于处理二进制文件，因为它们直接读写原始数据，而不进行任何格式转换</p>
+<p>如果执行成功，则函数返回形参count的值，即输入或输出的数据项的个数</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h4 id="数据的存储方式"><a href="#数据的存储方式" class="headerlink" title="数据的存储方式"></a>数据的存储方式</h4><ol>
+<li>文本方式：数据以字符（ASCII码）存储到文件中（所以int型数据也只占2字节）</li>
+<li>二进制方式：数据按内存的存储状态原封不动地复制到文件，（int型数据送到文件时占4个字节）</li>
+</ol>
+<h4 id="文件的分类"><a href="#文件的分类" class="headerlink" title="文件的分类"></a>文件的分类</h4><ol>
+<li>文本文件：文件中全部为ASCII字符</li>
+<li>二进制文件：按二进制方式把在内存中的数据复制到文件</li>
+</ol>
+<h4 id="文件的打开方式"><a href="#文件的打开方式" class="headerlink" title="文件的打开方式"></a>文件的打开方式</h4><ol>
+<li>文本方式：不带b的方式，读写文件时换行符进行转换</li>
+<li>二进制方式：带b的方式，读写文件时不对换行符进行转换</li>
+</ol>
+<h4 id="文件读写函数"><a href="#文件读写函数" class="headerlink" title="文件读写函数"></a>文件读写函数</h4><ol>
+<li>文本读写函数：用来向文本文件读写字符数据的函数（<code>fgetc,fgets,fputc,fputs,fscanf,fprintf</code>）</li>
+<li>二进制读写函数：用来向二进制文件读写二进制数据的函数（<code>getw,putw,fread,fwrite</code>）</li>
+</ol>
+<p><strong>C语言不禁止文本方式与二进制方式之间存在交叉，虽然合法，但往往会导致出错</strong></p>
+<h2 id="随机读写数据文件"><a href="#随机读写数据文件" class="headerlink" title="随机读写数据文件"></a>随机读写数据文件</h2><h3 id="文件位置标记及其定位"><a href="#文件位置标记及其定位" class="headerlink" title="文件位置标记及其定位"></a>文件位置标记及其定位</h3><h4 id="位置标记"><a href="#位置标记" class="headerlink" title="位置标记"></a>位置标记</h4><p>一般情况下，在对字符文件进行顺序读写时，文件位置标记指向文件开头，读一个后就指向后一个位置</p>
+<p>可以根据需要，人为的移动文件位置标记，这就是随机读写</p>
+<p>对流式文件可以进行<strong>顺序读写</strong>，也可以进行<strong>随机读写</strong>，区别就是文件位置标记的移动的规律</p>
+<h4 id="位置标记的定位"><a href="#位置标记的定位" class="headerlink" title="位置标记的定位"></a>位置标记的定位</h4><p><strong><code>rewind</code>函数</strong></p>
+<p>使文件位置标记重新返回文件的开头，此函数没有返回值</p>
+<hr>
+<p><strong><code>fseek</code>函数</strong></p>
+<p><code>fseek(文件类型指针, 位移量, 起始点)</code></p>
+<p>起始点用0、 1、 2代替</p>
+<blockquote>
+<p>0代表“文件开始位置”，1代表“当前位置”，2代表“文件末尾位置”</p>
+</blockquote>
+<p>位移量：以“起始点”为基点，向前移动的字节数，位移量应是long型数据（数字末尾加L）</p>
+<p><code>fseek</code>函数一般用于二进制文件</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fseek(fp,<span class="number">100L</span>,<span class="number">0</span>);	<span class="comment">//将文件位置标记向前移动到离文件开头100个字节处</span></span><br><span class="line">fseek(fp,<span class="number">50L</span>,<span class="number">1</span>);	<span class="comment">//将文件位置标记向前移动到离当前位置50个字节处</span></span><br><span class="line">fseek(fp,<span class="number">-10L</span>,<span class="number">2</span>);	<span class="comment">//将文件位置标记从文件末尾处向后退10个字节</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong><code>ftell</code>函数</strong></p>
+<p>得到流式文件中文件位置标记的当前位置（相对于文件开头的位移量）</p>
+<p>如果调用出错，返回值为-1L</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i=ftell(fp);		<span class="comment">//变量i存放文件当前位置</span></span><br><span class="line"><span class="keyword">if</span>(i==<span class="number">-1L</span>)<span class="built_in">printf</span>(<span class="string">&quot;error\n&quot;</span>);	<span class="comment">//如果函数调用出错，输出“error”</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="随机读写"><a href="#随机读写" class="headerlink" title="随机读写"></a>随机读写</h3><h2 id="文件读写的出错检测"><a href="#文件读写的出错检测" class="headerlink" title="文件读写的出错检测"></a>文件读写的出错检测</h2><h4 id="ferror函数"><a href="#ferror函数" class="headerlink" title="ferror函数"></a><code>ferror</code>函数</h4><p>在调用各种输入输出函数时，如果出错，可以用ferror函数检查</p>
+<p><strong><code>ferror(fp);</code></strong></p>
+<p>如果返回 0(假)，表示未出错；返回非零值，则表示出错，初始值为 0</p>
+<p>对同一个文件每次调用输入输出函数，都会产生一个新的ferror函数值</p>
+<h4 id="clearerr函数"><a href="#clearerr函数" class="headerlink" title="clearerr函数"></a><code>clearerr</code>函数</h4><p>使文件出错标志和文件结束标志为 0</p>
+<p>只要文件出现读写出错标志，它就一直保留，直到对同一文件使用<code>clearerr</code>函数或<code>rewind</code>函数，或任何其他一个输入输出函数</p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%B3/">C笔记之基本介绍</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/09/11/WriteBlog/">学习编写博客</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Xikan</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text">对文件的输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-text">文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">文件缓冲区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%8C%87%E9%92%88"><span class="toc-text">文件类型指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0%E5%BD%92%E7%BA%B3"><span class="toc-text">常用输入输出函数归纳</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#EOF%EF%BC%88End-Of-File%EF%BC%89"><span class="toc-text">EOF（End Of File）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#scanf%E5%87%BD%E6%95%B0"><span class="toc-text">scanf函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getchar%E5%87%BD%E6%95%B0"><span class="toc-text">getchar函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#putchar%E5%87%BD%E6%95%B0"><span class="toc-text">putchar函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gets%E5%87%BD%E6%95%B0"><span class="toc-text">gets函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#puts%E5%87%BD%E6%95%B0"><span class="toc-text">puts函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E3%80%81%E5%85%B3%E9%97%AD%E6%96%87%E4%BB%B6"><span class="toc-text">打开、关闭文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8fopen%E5%87%BD%E6%95%B0%E6%89%93%E5%BC%80%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="toc-text">用fopen函数打开数据文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8fclose%E5%87%BD%E6%95%B0%E5%85%B3%E9%97%AD%E6%96%87%E4%BB%B6"><span class="toc-text">用fclose函数关闭文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="toc-text">顺序读写数据文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E5%AD%97%E7%AC%A6"><span class="toc-text">向文件读写字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">向文件读写字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%B9%E5%BC%8F%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6"><span class="toc-text">用格式化方式读写文本文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%B9%E5%BC%8F%E5%90%91%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E4%B8%80%E7%BB%84%E6%95%B0%E6%8D%AE"><span class="toc-text">用二进制方式向文件读写一组数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">数据的存储方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">文件的分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F"><span class="toc-text">文件的打开方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E5%87%BD%E6%95%B0"><span class="toc-text">文件读写函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="toc-text">随机读写数据文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE%E6%A0%87%E8%AE%B0%E5%8F%8A%E5%85%B6%E5%AE%9A%E4%BD%8D"><span class="toc-text">文件位置标记及其定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E6%A0%87%E8%AE%B0"><span class="toc-text">位置标记</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E6%A0%87%E8%AE%B0%E7%9A%84%E5%AE%9A%E4%BD%8D"><span class="toc-text">位置标记的定位</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%86%99"><span class="toc-text">随机读写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E7%9A%84%E5%87%BA%E9%94%99%E6%A3%80%E6%B5%8B"><span class="toc-text">文件读写的出错检测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ferror%E5%87%BD%E6%95%B0"><span class="toc-text">ferror函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#clearerr%E5%87%BD%E6%95%B0"><span class="toc-text">clearerr函数</span></a></li></ol></li></ol></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
