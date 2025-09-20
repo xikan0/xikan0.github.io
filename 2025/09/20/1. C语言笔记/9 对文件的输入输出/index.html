@@ -17,19 +17,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>C笔记之基本介绍 - Xikan的博客</title>
+  <title>C笔记之文件的输入输出 - Xikan的博客</title>
 
   
     <meta name="description" content="对文件的输入输出文件什么是文件：存储在外部介质上数据的集合  程序文件：源程序文件(.c)、目标文件(.obj)、可执行文件(.exe) 数据文件：文件的内容是供程序运行时读写的数据  输入输出是数据传送的过程，又称为流，也叫“数据流”，流表示了信息从 源 到 目的 端的流动 文件分类：  数据文件分为：ASCII文件（文本文件）、二进制文件（映像文件）  文件缓冲区ANSI C标准采用**“缓冲">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C笔记之基本介绍">
+<meta property="og:title" content="C笔记之文件的输入输出">
 <meta property="og:url" content="http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
 <meta property="og:site_name" content="Xikan的博客">
 <meta property="og:description" content="对文件的输入输出文件什么是文件：存储在外部介质上数据的集合  程序文件：源程序文件(.c)、目标文件(.obj)、可执行文件(.exe) 数据文件：文件的内容是供程序运行时读写的数据  输入输出是数据传送的过程，又称为流，也叫“数据流”，流表示了信息从 源 到 目的 端的流动 文件分类：  数据文件分为：ASCII文件（文本文件）、二进制文件（映像文件）  文件缓冲区ANSI C标准采用**“缓冲">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/head.png">
 <meta property="article:published_time" content="2025-09-20T14:25:16.000Z">
-<meta property="article:modified_time" content="2025-09-20T14:59:59.764Z">
+<meta property="article:modified_time" content="2025-09-20T15:19:53.426Z">
 <meta property="article:author" content="Xikan">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary">
@@ -51,7 +51,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Xikan","sameAs":[],"image":"/images/head.png"},"dateCreated":"2025-09-20T22:25:16+08:00","dateModified":"2025-09-20T22:59:59+08:00","datePublished":"2025-09-20T22:25:16+08:00","description":"","headline":"C笔记之基本介绍","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"},"publisher":{"@type":"Organization","name":"Xikan","sameAs":[],"image":"/images/head.png","logo":{"@type":"ImageObject","url":"/images/head.png"}},"url":"http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/","keywords":"C语言","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Xikan","sameAs":[],"image":"/images/head.png"},"dateCreated":"2025-09-20T22:25:16+08:00","dateModified":"2025-09-20T23:19:53+08:00","datePublished":"2025-09-20T22:25:16+08:00","description":"","headline":"C笔记之文件的输入输出","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"},"publisher":{"@type":"Organization","name":"Xikan","sameAs":[],"image":"/images/head.png","logo":{"@type":"ImageObject","url":"/images/head.png"}},"url":"http://example.com/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/","keywords":"C语言","image":[]}</script>
   
 </head>
 <body>
@@ -70,7 +70,7 @@
 
 
 
-<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/1%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%B3/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/10%20%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/8%20%E7%BB%93%E6%9E%84%E4%BD%93/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/7%20%E6%8C%87%E9%92%88/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/6%20%E5%87%BD%E6%95%B0/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/5%20%E6%95%B0%E7%BB%84/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/4%20%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/3%20%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/"><span class="title">C笔记之基本介绍</span></a></div></widget>
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/1%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/"><span class="title">C笔记之基本介绍</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/10%20%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/"><span class="title">C笔记之常见算法</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/9%20%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"><span class="title">C笔记之文件的输入输出</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/8%20%E7%BB%93%E6%9E%84%E4%BD%93/"><span class="title">C笔记之结构体</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/7%20%E6%8C%87%E9%92%88/"><span class="title">C笔记之指针</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/6%20%E5%87%BD%E6%95%B0/"><span class="title">C笔记之函数</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/5%20%E6%95%B0%E7%BB%84/"><span class="title">C笔记之数组</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/4%20%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/"><span class="title">C笔记之循环结构</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/3%20%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/"><span class="title">C笔记之选择结构</span></a><a class="item title" href="/2025/09/20/1.%20C%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/2%20C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/"><span class="title">C笔记之C语言基础</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -83,12 +83,12 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-09-20T14:25:16.000Z">2025-09-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-09-20T14:59:59.764Z">2025-09-20</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-09-20T14:25:16.000Z">2025-09-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-09-20T15:19:53.426Z">2025-09-20</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>C笔记之基本介绍</span></h1>
+        <h1 class="text title"><span>C笔记之文件的输入输出</span></h1>
         
       </div>
     </div>
