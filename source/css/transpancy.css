@@ -18,3 +18,55 @@
 	/* 以下代表透明度为0.7 */
 	background: rgba(255,255,255, .05);
 }
+
+/* ============================================
+   导航栏优化
+   ============================================ */
+
+/* 导航栏增高 + 链接加粗 */
+#nav {
+  height: 58px;
+}
+
+#nav .site-page {
+  font-size: .88em;
+  font-weight: 600;
+}
+
+/* 首页头图时，导航栏加半透明暖色遮罩，防止白图看不清 */
+#page-header #nav:not(.fixed) {
+  background: rgba(255, 248, 240, 0.15);
+}
+
+/* 滚动后的毛玻璃导航栏 */
+#nav.fixed {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* 站点标题加大 */
+#site-title {
+  font-size: 1.4em;
+}
+
+/* ============================================
+   文章卡片 hover 上浮动画
+   ============================================ */
+
+.recent-post-item:hover {
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   全局链接过渡
+   ============================================ */
+
+a {
+  transition: color .25s ease;
+}
+
+#nav .site-page:hover {
+  transform: scale(1.05);
+  transition: transform .2s ease;
+}
