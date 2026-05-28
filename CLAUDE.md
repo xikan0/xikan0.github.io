@@ -73,3 +73,8 @@ categories: [分类名]
 - 部署使用 `hexo-deployer-git`，将 `public/` 推送到 `main` 分支供 GitHub Pages 服务
 - 源码提交到 `source` 分支，与部署的静态文件（`main` 分支）分离
 - `public/` 和 `.deploy_git/` 是自动生成的，不应手动编辑或提交
+- 访问 GitHub 失败时，先设置代理再重试：
+  ```bash
+  export http_proxy=http://127.0.0.1:7897
+  export https_proxy=http://127.0.0.1:7897
+  ```
