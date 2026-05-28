@@ -79,7 +79,7 @@ disable_top_img: false
 
 # 如果有页面未设置横幅，则显示默认的横幅图片
 # If the banner of page not setting, it will show the default_top_img
-default_top_img:
+default_top_img: https://cdn.jsdelivr.net/gh/xikan0/ImgHosting@main/PIC/132164413_p18.webp
 
 # 主页的横幅图片
 # The banner image of index page

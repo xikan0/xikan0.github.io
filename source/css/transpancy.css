@@ -1,22 +1,33 @@
-/* 文章页背景 */
-.layout_post>#post {
-    /* 以下代表透明度为0.7 可以自行修改*/
-    background: rgba(255,255,255,.9);
+/* 侧边栏卡片 + 首页文章卡片 */
+#aside_content .card-widget, #recent-posts>.recent-post-item{
+  background: #fff;
 }
- 
-/* 所有页面背景 */
-#aside_content .card-widget, #recent-posts>.recent-post-item, .layout_page>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post{
-    /* 以下代表透明度为0.7 */
-    background: rgba(255,255,255,.9);
+html[data-theme="dark"] #aside_content .card-widget,
+html[data-theme="dark"] #recent-posts>.recent-post-item {
+  background: #0d1b2a !important;
 }
-/*侧边卡片的透明度 */
-:root {
-  --card-bg: rgba(255, 255, 255, .9);
+
+/* 文章页 / 通用页面内容区 */
+#content-inner > div:first-child:not(.nc) {
+  background: #fff;
+}
+html[data-theme="dark"] #content-inner > div:first-child:not(.nc) {
+  background: #0d1b2a !important;
+}
+
+/* 页面底色暖白 */
+body {
+  background: #f5f2ee;
+}
+html[data-theme="dark"] body {
+  background: #0d0d0d !important;
 }
 /* 页脚透明 */
 #footer {
-	/* 以下代表透明度为0.7 */
-	background: rgba(255,255,255, .05);
+  background: rgba(255,255,255, .05);
+}
+[data-theme="dark"] #footer {
+  background: rgba(0, 0, 0, .3);
 }
 
 /* ============================================
@@ -33,7 +44,7 @@
   font-weight: 600;
 }
 
-/* 导航栏始终保持首页样式，所有状态统一样式 */
+/* 导航栏统一浅色毛玻璃（首页样式） */
 #page-header.nav-fixed #nav,
 #page-header.nav-visible #nav,
 #page-header.not-top-img #nav {
@@ -41,6 +52,12 @@
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   box-shadow: none !important;
+}
+
+[data-theme="dark"] #page-header.nav-fixed #nav,
+[data-theme="dark"] #page-header.nav-visible #nav,
+[data-theme="dark"] #page-header.not-top-img #nav {
+  background: rgba(18, 18, 18, 0.6) !important;
 }
 
 /* 导航链接保持浅色 */
@@ -122,9 +139,112 @@ a {
   z-index: -1;
 }
 
-/* 文章卡片背景加强 */
-#recent-posts > .recent-post-item {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+/* ============================================
+   文章正文排版优化（Typora 风格阅读体验）
+   ============================================ */
+
+#article-container {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* ============================================
+   首页文章卡片 - 极简标题美化 + 整卡可点击
+   ============================================ */
+
+.recent-post-item {
+  cursor: pointer;
+}
+
+.recent-post-item .article-title {
+  font-size: 2.2em;
+  border-left: 3px solid #5BA0D0;
+  padding-left: 15px;
+  font-weight: 600;
+  transition: padding-left .3s ease, color .3s ease, border-color .3s ease, background-color .3s ease;
+}
+
+[data-theme="dark"] .recent-post-item .article-title {
+  border-left-color: #7BB8E0;
+}
+
+.recent-post-item .article-title:hover {
+  padding-left: 19px;
+  border-left-color: #4A8AB5;
+  background-color: rgba(91, 160, 208, 0.04);
+}
+
+[data-theme="dark"] .recent-post-item .article-title:hover {
+  border-left-color: #9CC8E8;
+  background-color: rgba(91, 160, 208, 0.1);
+}
+
+/* 点击覆盖层 - 使整张卡片可点击 */
+.recent-post-item .article-title::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+/* ============================================
+   文章页标题背景图强制显示
+   ============================================ */
+
+#page-header.post-bg {
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+/* ============================================
+   文章页 TOC 美化 - 平面简约风格
+   ============================================ */
+
+/* 自定义窄滚动条 */
+#card-toc .toc-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* 激活项：左侧竖条 + 文字高亮，代替纯色背景块 */
+#card-toc .toc-link.active {
+  background: transparent;
+  border-left: 3px solid #5BA0D0;
+  border-radius: 0;
+  padding-left: 12px;
+  color: #5BA0D0;
+}
+
+[data-theme="dark"] #card-toc .toc-link.active {
+  border-left-color: #7BB8E0;
+  color: #7BB8E0;
+}
+
+/* 子层级连接线改为主题色 */
+#card-toc .toc-content > * > .toc-item > .toc-child {
+  border-left-color: rgba(91, 160, 208, 0.25);
+}
+
+[data-theme="dark"] #card-toc .toc-content > * > .toc-item > .toc-child {
+  border-left-color: rgba(123, 184, 224, 0.25);
+}
+
+/* ============================================
+   文章标题图标颜色统一为天空蓝
+   ============================================ */
+
+#article-container h1::before,
+#article-container h2::before,
+#article-container h3::before,
+#article-container h4::before,
+#article-container h5::before,
+#article-container h6::before {
+  color: #5BA0D0;
+}
+
+[data-theme="dark"] #article-container h1::before,
+[data-theme="dark"] #article-container h2::before,
+[data-theme="dark"] #article-container h3::before,
+[data-theme="dark"] #article-container h4::before,
+[data-theme="dark"] #article-container h5::before,
+[data-theme="dark"] #article-container h6::before {
+  color: #7BB8E0;
 }

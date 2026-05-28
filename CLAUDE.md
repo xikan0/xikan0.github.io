@@ -72,11 +72,29 @@ categories: [分类名]
 所有自定义样式集中在此文件，覆盖 Butterfly 主题默认行为。
 
 **当前样式要点：**
-- 全局半透明（文章卡片、侧边栏、页脚）
+- 卡片纯色背景（`#fff` 亮色 / `#0d1b2a` 暗色），页脚仍为半透明
 - 导航栏统一为首页样式（浅色半透明+毛玻璃），所有滚动状态不变化
 - 首页头图固定：`::after` 伪元素 `position: fixed` + `background: inherit`，标题正常滚动消失
 - 文章卡片 hover 上浮动画 + 全局链接过渡
 - 主色调：天空蓝 #5BA0D0（`_config.butterfly.yml` 中 `theme_color.main`）
+
+**修改样式前先查阅本地主题源码：**
+在修改特定部位样式前，先查阅 `themes/butterfly/` 中对应的源文件（CSS 变量位于 `source/css/var.styl`，布局模版在 `layout/`，配置项在 `_config.yml`），确认该样式是否已有现成配置项或 CSS 变量，避免重复造轮子。
+
+**页面 DOM 结构速查（Butterfly 主题）：**
+
+| 页面类型 | `#body-wrap` class | 主内容区 |
+|----------|-------------------|---------|
+| 首页 | `page` | `#content-inner > #recent-posts` |
+| 文章页 | `post` | `#content-inner > #post` |
+| 标签/分类/归档/关于 | `page type-xxx` | `#content-inner > #page` |
+
+主题通过 `.layout > div:first-child:not(.nc)`（`themes/butterfly/source/css/_page/common.styl:23`）应用 `@extend .cardHover` → `background: var(--card-bg)`。自定义 `transpancy.css` 中硬编码的 `#fff` / `#0d1b2a` 覆盖了此变量。编写新选择器时务必确认对应类名在主题源码中真实存在，不要凭想象使用如 `.layout_post`、`.layout_page` 等不存在的类名。
+
+**CSS 编写规则：**
+- 编写选择器前，先在 `themes/butterfly/source/css/` 中 grep 确认类名是否存在
+- 或在 `public/` 的生成 HTML 中检查实际 DOM 结构
+- 修改 CSS 后必须 `npm run clean && npm run build`，hexo server 不会自动刷新 CSS 变更
 
 **Nav 选择器注意事项：**
 - Butterfly JS 将 `.nav-fixed` / `.nav-visible` 添加到 `#page-header`（不是 `#nav`），正确选择器是 `#page-header.nav-fixed #nav`
