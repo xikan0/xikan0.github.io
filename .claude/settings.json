@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm *)",
+      "Bash(hexo *)",
+      "Bash(npx *)",
+      "Bash(git *)",
+      "Bash(mkdir *)",
+      "Bash(ls *)"
+    ]
+  }
+}
