@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-基于 Hexo 8.0.0 的个人博客，主题为 Butterfly，部署到 GitHub Pages (`https://xikan0.github.io`)，使用 Git 进行版本管理。
+基于 Hexo 8.0.0 的个人博客，主题为 Butterfly，使用 Git 进行版本管理。
+
+- **源码仓库**：`https://github.com/xikan0/xikan0.github.io`（`source` 分支）
+- **部署目标**：同一仓库的 `main` 分支（GitHub Pages 从 `main` 分支提供服务，由 `hexo deploy` 推送）
+- **访问地址**：`https://xikan0.github.io`
 
 ## 常用命令
 
@@ -66,5 +70,6 @@ categories: [分类名]
 ## 注意事项
 
 - 主题 Butterfly 在 `themes/butterfly/` 内是独立 git 仓库，修改主题文件需要进入该目录操作
-- 部署使用 `hexo-deployer-git`，推送到 `xikan0.github.io.git` 的 `main` 分支
+- 部署使用 `hexo-deployer-git`，将 `public/` 推送到 `main` 分支供 GitHub Pages 服务
+- 源码提交到 `source` 分支，与部署的静态文件（`main` 分支）分离
 - `public/` 和 `.deploy_git/` 是自动生成的，不应手动编辑或提交
