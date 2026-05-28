@@ -83,7 +83,7 @@ default_top_img: https://cdn.jsdelivr.net/gh/xikan0/ImgHosting@main/PIC/P6.jpg
 
 # 主页的横幅图片
 # The banner image of index page
-index_img:
+index_img: https://cdn.jsdelivr.net/gh/xikan0/ImgHosting@main/PIC/P34.jpg
 
 # 归档页的横幅图片
 # The banner image of archive page
@@ -787,21 +787,21 @@ site_verification:
 
 theme_color:
   enable: true
-  main: "#F4A460"
-  paginator: "#F4A460"
-  button_hover: "#E8933E"
-  text_selection: "#F4A460"
-  link_color: "#F4A460"
+  main: "#5BA0D0"
+  paginator: "#5BA0D0"
+  button_hover: "#4A8AB5"
+  text_selection: "#5BA0D0"
+  link_color: "#5BA0D0"
   meta_color: "#999999"
-  hr_color: "#F4D3A0"
-  code_foreground: "#E8933E"
-  code_background: "rgba(244, 164, 96, 0.08)"
-  toc_color: "#F4A460"
-  blockquote_padding_color: "#F4A460"
-  blockquote_background_color: "rgba(244, 164, 96, 0.12)"
-  scrollbar_color: "#F4A460"
-  meta_theme_color_light: "#FFF8F0"
-  meta_theme_color_dark: "#2C2418"
+  hr_color: "#A0C8E8"
+  code_foreground: "#4A8AB5"
+  code_background: "rgba(91, 160, 208, 0.08)"
+  toc_color: "#5BA0D0"
+  blockquote_padding_color: "#5BA0D0"
+  blockquote_background_color: "rgba(91, 160, 208, 0.12)"
+  scrollbar_color: "#5BA0D0"
+  meta_theme_color_light: "#F0F8FF"
+  meta_theme_color_dark: "#1A2A3A"
 
 # The user interface setting of category and tag page
 # Choose: index - same as Homepage UI / default - same as archives UI

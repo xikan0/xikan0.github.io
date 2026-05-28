@@ -33,16 +33,38 @@
   font-weight: 600;
 }
 
-/* 首页头图时，导航栏加半透明暖色遮罩，防止白图看不清 */
-#page-header #nav:not(.fixed) {
-  background: rgba(255, 248, 240, 0.15);
+/* 导航栏始终保持首页样式，所有状态统一样式 */
+#page-header.nav-fixed #nav,
+#page-header.nav-visible #nav,
+#page-header.not-top-img #nav {
+  background: rgba(255, 248, 240, 0.15) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: none !important;
 }
 
-/* 滚动后的毛玻璃导航栏 */
-#nav.fixed {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.75);
+/* 导航链接保持浅色 */
+#page-header.nav-fixed #nav .site-page,
+#page-header.nav-visible #nav .site-page,
+#page-header.not-top-img #nav .site-page {
+  color: var(--light-grey) !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, .15) !important;
+}
+
+#page-header.nav-fixed #nav .site-page:hover,
+#page-header.not-top-img #nav .site-page:hover {
+  color: #fff !important;
+}
+
+/* 站点标题链接也保持浅色 */
+#page-header.nav-fixed #blog-info a,
+#page-header.not-top-img #blog-info a {
+  color: var(--light-grey) !important;
+}
+
+#page-header.nav-fixed #blog-info a:hover,
+#page-header.not-top-img #blog-info a:hover {
+  color: #fff !important;
 }
 
 /* 站点标题加大 + 增强阴影 */
@@ -75,4 +97,34 @@ a {
 #nav .site-page:hover {
   transform: scale(1.05);
   transition: transform .2s ease;
+}
+
+/* ============================================
+   首页头图固定，标题正常滚动
+   ============================================ */
+
+/* 头图正常定位，标题随滚动消失 */
+#page-header.full_page {
+  position: relative !important;
+}
+
+/* 伪元素展示固定背景图，标题滚动后图仍在 */
+#page-header.full_page::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+/* 文章卡片背景加强 */
+#recent-posts > .recent-post-item {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }

@@ -67,6 +67,28 @@ categories: [分类名]
 - 说说页：`type: 'shuoshuo'`，数据来自 `source/_data/shuoshuo.yml`
 - 音乐页：设置 `aplayer: true`
 
+## 自定义 CSS（`source/css/transpancy.css`）
+
+所有自定义样式集中在此文件，覆盖 Butterfly 主题默认行为。
+
+**当前样式要点：**
+- 全局半透明（文章卡片、侧边栏、页脚）
+- 导航栏统一为首页样式（浅色半透明+毛玻璃），所有滚动状态不变化
+- 首页头图固定：`::after` 伪元素 `position: fixed` + `background: inherit`，标题正常滚动消失
+- 文章卡片 hover 上浮动画 + 全局链接过渡
+- 主色调：天空蓝 #5BA0D0（`_config.butterfly.yml` 中 `theme_color.main`）
+
+**Nav 选择器注意事项：**
+- Butterfly JS 将 `.nav-fixed` / `.nav-visible` 添加到 `#page-header`（不是 `#nav`），正确选择器是 `#page-header.nav-fixed #nav`
+- 覆盖主题样式时常需 `!important`，因为主题选择器特异性较高
+
+**配置变更后必须清理重建：**
+修改 `_config.butterfly.yml`（如 `index_img`、`background`、`theme_color`）后，hexo server 缓存可能不刷新。执行：
+```bash
+cd "F:/Blog" && npm run clean && npm run build
+```
+然后重启 server。仅 `npm run build` 不够。
+
 ## 注意事项
 
 - 主题 Butterfly 在 `themes/butterfly/` 内是独立 git 仓库，修改主题文件需要进入该目录操作
