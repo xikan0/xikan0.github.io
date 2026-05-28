@@ -78,3 +78,51 @@ categories: [分类名]
   export http_proxy=http://127.0.0.1:7897
   export https_proxy=http://127.0.0.1:7897
   ```
+
+## 风险操作规则
+
+以下操作**必须征得用户明确同意**后方可执行：
+
+| 操作 | 规则 |
+|------|------|
+| `npm run deploy` / `hexo deploy` | 直接更新线上网站，**必须先确认** |
+| `git push` 到 `main` 分支 | **禁止**，`main` 由 `hexo deploy` 独占推送 |
+| `git push --force`（任意分支） | **禁止**，不可逆 |
+| `git reset --hard` / `git clean -fd` | **禁止**，会丢失未提交的修改 |
+| 修改 `_config.yml` 的 `deploy` 配置 | **需先确认**，改错会导致部署失败 |
+| 手动编辑 `public/` 或 `.deploy_git/` | **禁止**，自动生成目录 |
+
+## 固定操作命令
+
+以下命令路径和参数已经验证正确，直接复制使用，**无需在 Blog/ 目录之外执行**。
+
+### 提交源码
+
+```bash
+git -C "F:/Blog" add <file...>
+git -C "F:/Blog" commit -m "$(cat <<'EOF'
+<commit message>
+EOF
+)"
+```
+
+### 推送源码到 GitHub
+
+```bash
+export http_proxy=http://127.0.0.1:7897 && export https_proxy=http://127.0.0.1:7897 && git -C "F:/Blog" push
+```
+
+### 构建 + 部署上线
+
+```bash
+cd "F:/Blog" && npm run build
+export http_proxy=http://127.0.0.1:7897 && export https_proxy=http://127.0.0.1:7897 && cd "F:/Blog" && npm run deploy
+```
+
+### 本地预览
+
+```bash
+cd "F:/Blog" && ./node_modules/.bin/hexo server
+```
+
+注意：`hexo` 命令不在全局 PATH 中，必须使用 `./node_modules/.bin/hexo` 或 `npx hexo`，且需在 `F:/Blog` 目录下执行。
