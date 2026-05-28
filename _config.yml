@@ -109,3 +109,6 @@ deploy:
 aplayer:
   meting: true
   asset_inject: false
+
+# Minification
+all_minifier: true

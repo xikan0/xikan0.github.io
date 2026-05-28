@@ -1031,14 +1031,14 @@ snackbar:
 
 # Instant.page
 # https://instant.page/
-instantpage: false
+instantpage: true
 
 # Lazyload
 # https://github.com/verlok/vanilla-lazyload
 lazyload:
-  enable: false
+  enable: true
   # Use browser's native lazyload instead of vanilla-lazyload
-  native: false
+  native: true
   # Specify the field to use lazyload (site or post)
   field: site
   placeholder:
@@ -1084,48 +1084,18 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/transpancy.css">
+    - <link rel="preconnect" href="https://raw.githubusercontent.com">
+  bottom:
     - |
       <script>
-        (function () {
-          // 防止重复加载
+        (function() {
           if (window.customFontsLoaded) return;
           window.customFontsLoaded = true;
-
-          const fontJsonUrl = 'https://cdn.jsdelivr.net/gh/xikan0/ImgHosting@main/TTF/fonts.json';
-
-          fetch(fontJsonUrl)
-            .then(res => {
-              if (!res.ok) throw new Error('Font list fetch failed');
-              return res.json();
-            })
-            .then(fonts => {
-              // 构建 @font-face CSS
-              let css = '';
-              fonts.forEach(font => {
-                css += `
-                  @font-face {
-                    font-family: '${font.family}';
-                    src: url('${font.url}') format('${font.format || 'woff2'}');
-                    font-weight: ${font.weight || 'normal'};
-                    font-style: ${font.style || 'normal'};
-                    font-display: swap;
-                  }
-                `;
-              });
-
-              // 注入 <style>
-              const style = document.createElement('style');
-              style.textContent = css;
-              document.head.appendChild(style);
-              console.log('✅ 自定义字体已加载:', fonts.map(f => f.family));
-            })
-            .catch(err => {
-              console.warn('⚠️ 自定义字体加载失败:', err);
-            });
+          var s = document.createElement('style');
+          s.textContent = "@font-face{font-family:'Electrolize';src:url('https://cdn.jsdelivr.net/gh/xikan0/ImgHosting@main/TTF/Electrolize-Regular.ttf') format('truetype');font-weight:normal;font-style:normal;font-display:swap;}";
+          document.head.appendChild(s);
         })();
       </script>
-  bottom:
-    # - <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
@@ -1134,7 +1104,7 @@ CDN:
   # Options for both: local/jsdelivr/unpkg/cdnjs/custom
   # Note: Dev version can only use 'local' for internal scripts
   # Note: When setting third-party scripts to 'local', you need to install hexo-butterfly-extjs
-  internal_provider: local
+  internal_provider: jsdelivr
   third_party_provider: jsdelivr
 
   # Add version number to url, true or false
