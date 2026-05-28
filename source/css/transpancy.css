@@ -45,9 +45,15 @@
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* 站点标题加大 */
+/* 站点标题加大 + 增强阴影 */
 #site-title {
-  font-size: 1.4em;
+  font-size: 2.6em;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#site-subtitle {
+  font-size: 1.3em;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* ============================================

@@ -125,4 +125,11 @@ export http_proxy=http://127.0.0.1:7897 && export https_proxy=http://127.0.0.1:7
 cd "F:/Blog" && ./node_modules/.bin/hexo server
 ```
 
+### 端口被占用时释放 4000 端口
+
+```bash
+netstat -ano | grep :4000           # 查找占用端口的 PID
+cmd //c "taskkill /PID <PID> /F"    # 用 PID 杀掉进程（Git Bash 下需 cmd //c 包装）
+```
+
 注意：`hexo` 命令不在全局 PATH 中，必须使用 `./node_modules/.bin/hexo` 或 `npx hexo`，且需在 `F:/Blog` 目录下执行。

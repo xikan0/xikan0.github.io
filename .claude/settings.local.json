@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git init *)"
+      "Bash(git init *)",
+      "WebFetch(domain:localhost)",
+      "Bash(curl -s http://localhost:4000/)",
+      "Bash(curl *)",
+      "Bash(export http_proxy=http://127.0.0.1:7897)",
+      "Bash(export https_proxy=http://127.0.0.1:7897)"
     ]
   }
 }
