@@ -248,3 +248,36 @@ a {
 [data-theme="dark"] #article-container h6::before {
   color: #7BB8E0;
 }
+
+/* ============================================
+   Loading 动画 - 天空蓝配色
+   ============================================ */
+
+/* 门帘背景同 body 底色，消失后无缝衔接 */
+:root {
+  --preloader-bg: #f5f2ee;
+  --preloader-color: #4a6a7a;
+}
+
+/* Spinner 边框 - 天空蓝 */
+#loading-box .spinner-box .configure-border-1 {
+  background: #5BA0D0;
+}
+
+#loading-box .spinner-box .configure-border-2 {
+  background: #a8d5e8;
+}
+
+/* 暗色模式 */
+[data-theme="dark"] {
+  --preloader-bg: #0d0d0d;
+  --preloader-color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] #loading-box .spinner-box .configure-border-1 {
+  background: #7BB8E0;
+}
+
+[data-theme="dark"] #loading-box .spinner-box .configure-border-2 {
+  background: #3a7ca5;
+}
