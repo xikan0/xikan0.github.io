@@ -253,9 +253,9 @@ a {
    Loading 动画 - 天空蓝配色
    ============================================ */
 
-/* 门帘背景同 body 底色，消失后无缝衔接 */
+/* 门帘浅蓝背景 */
 :root {
-  --preloader-bg: #f5f2ee;
+  --preloader-bg: #e3f2fd;
   --preloader-color: #4a6a7a;
 }
 
@@ -270,7 +270,7 @@ a {
 
 /* 暗色模式 */
 [data-theme="dark"] {
-  --preloader-bg: #0d0d0d;
+  --preloader-bg: #1a1a1a;
   --preloader-color: rgba(255, 255, 255, 0.7);
 }
 
@@ -286,18 +286,19 @@ a {
    Loading 动画 - 最小显示时间 1.2s
    ============================================ */
 
-/* 门帘延迟滑出（覆盖主题的 transition: all .5s） */
-#loading-box.loaded .loading-left-bg {
+/* 仅在首页生效：门帘延迟滑出（覆盖主题的 transition: all .5s） */
+html[data-loading-delay] #loading-box.loaded .loading-left-bg {
   transition: transform 0.5s 1.2s ease;
 }
 
-#loading-box.loaded .loading-right-bg {
+html[data-loading-delay] #loading-box.loaded .loading-right-bg {
   transition: transform 0.5s 1.2s ease;
 }
 
-/* Spinner 延迟淡出（覆盖主题的 display: none） */
-#loading-box.loaded .spinner-box {
+/* 仅在首页生效：Spinner 延迟淡出（覆盖主题的 display: none） */
+html[data-loading-delay] #loading-box.loaded .spinner-box {
   display: flex !important;
+  pointer-events: none;
   animation: loading-spinner-fade 0.35s 1.2s forwards;
 }
 

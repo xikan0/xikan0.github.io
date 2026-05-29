@@ -1085,6 +1085,16 @@ inject:
   head:
     - <link rel="stylesheet" href="/css/transpancy.css">
     - <link rel="preconnect" href="https://raw.githubusercontent.com">
+    - |
+      <script>
+        (function() {
+          var p = location.pathname;
+          if (p === '/' || p === '/index.html') {
+            history.scrollRestoration = 'manual';
+            document.documentElement.setAttribute('data-loading-delay', '');
+          }
+        })();
+      </script>
   bottom:
     - |
       <script>
