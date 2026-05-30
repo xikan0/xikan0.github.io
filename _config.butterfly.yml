@@ -1091,7 +1091,6 @@ inject:
           var p = location.pathname;
           if (p === '/' || p === '/index.html') {
             history.scrollRestoration = 'manual';
-            document.documentElement.setAttribute('data-loading-delay', '');
           }
         })();
       </script>

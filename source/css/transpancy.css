@@ -281,29 +281,3 @@ a {
 [data-theme="dark"] #loading-box .spinner-box .configure-border-2 {
   background: #3a7ca5;
 }
-
-/* ============================================
-   Loading 动画 - 最小显示时间 1.2s
-   ============================================ */
-
-/* 仅在首页生效：门帘延迟滑出（覆盖主题的 transition: all .5s） */
-html[data-loading-delay] #loading-box.loaded .loading-left-bg {
-  transition: transform 0.5s 1.2s ease;
-}
-
-html[data-loading-delay] #loading-box.loaded .loading-right-bg {
-  transition: transform 0.5s 1.2s ease;
-}
-
-/* 仅在首页生效：Spinner 延迟淡出（覆盖主题的 display: none） */
-html[data-loading-delay] #loading-box.loaded .spinner-box {
-  display: flex !important;
-  pointer-events: none;
-  animation: loading-spinner-fade 0.35s 1.2s forwards;
-}
-
-@keyframes loading-spinner-fade {
-  to {
-    opacity: 0;
-  }
-}
