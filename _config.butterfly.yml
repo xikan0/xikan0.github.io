@@ -891,7 +891,7 @@ canvas_ribbon:
 
 # Fluttering Ribbon
 canvas_fluttering_ribbon:
-  enable: true
+  enable: false
   mobile: false
 
 # canvas_nest
@@ -1017,7 +1017,7 @@ pjax:
 # Inject the css and script (aplayer/meting)
 aplayerInject:
   enable: true
-  per_page: true
+  per_page: false
 
 # Snackbar - Toast Notification
 # https://github.com/polonel/SnackBar
@@ -1095,6 +1095,7 @@ inject:
         })();
       </script>
   bottom:
+    - <div class="aplayer meting-tag-marker no-destroy" data-id="14396940385" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-theme="#e0e0e0"></div>
     - |
       <script>
         (function() {
