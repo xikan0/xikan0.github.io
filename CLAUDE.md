@@ -118,6 +118,7 @@ cd "F:/Blog" && npm run clean && npm run build
   export http_proxy=http://127.0.0.1:7897
   export https_proxy=http://127.0.0.1:7897
   ```
+- `npm audit` 存在已知漏洞（主要来自 `hexo-all-minifier` 依赖链），均为构建时依赖，不影响部署后的站点安全；如需处理可考虑替换为 `hexo-neat`
 
 ## 风险操作规则
 

@@ -283,52 +283,38 @@ a {
 }
 
 /* ============================================
-   音乐播放器 — 极简白微调
+   固定音乐播放器 — 全局吸底
    ============================================ */
 
-.aplayer {
-  border-radius: 12px !important;
-  border: 1px solid rgba(0, 0, 0, .06) !important;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, .04) !important;
+/* 播放器圆角和阴影 */
+.fixed-music-player.aplayer {
+  box-shadow: 0 -2px 20px rgba(0, 0, 0, .06) !important;
 }
 
-.aplayer .aplayer-pic .aplayer-button {
+/* 播放按钮背景 */
+.fixed-music-player .aplayer-pic .aplayer-button {
   background: rgba(255, 255, 255, .7) !important;
 }
 
-.aplayer .aplayer-pic .aplayer-button svg path {
+.fixed-music-player .aplayer-pic .aplayer-button svg path {
   fill: #333 !important;
 }
 
-.aplayer .aplayer-body .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
+/* 进度条 */
+.fixed-music-player .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
   background: #d0d0d0 !important;
 }
 
-.aplayer .aplayer-body .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
+/* 控制按钮 */
+.fixed-music-player .aplayer-time .aplayer-icon path {
   fill: #bbb !important;
 }
 
-.aplayer .aplayer-body .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path {
+.fixed-music-player .aplayer-time .aplayer-icon:hover path {
   fill: #666 !important;
 }
 
-/* ============================================
-   全局吸底播放器
-   ============================================ */
-
-/* 吸底播放器样式微调 */
-.aplayer.aplayer-fixed {
-  border-radius: 8px 8px 0 0 !important;
-  border: 1px solid rgba(0, 0, 0, .06) !important;
-  border-bottom: none !important;
-  box-shadow: 0 -2px 16px rgba(0, 0, 0, .06) !important;
-}
-
-.aplayer.aplayer-fixed .aplayer-body {
-  background: #fff !important;
-}
-
-.aplayer.aplayer-fixed .aplayer-list {
-  border-top: 1px solid #f0f0f0 !important;
-  background: #fafafa !important;
+/* 暗色模式适配 */
+[data-theme="dark"] .fixed-music-player.aplayer {
+  box-shadow: 0 -2px 20px rgba(0, 0, 0, .3) !important;
 }

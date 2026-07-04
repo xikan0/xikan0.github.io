@@ -27,7 +27,6 @@ menu:
   分类: /categories/ || fas fa-folder-open
   # 列表
   其他 || fas fa-list:
-    音乐: /music/ || fas fa-music
     友链: /link/ || fas fa-link
     关于: /about/ || fas fa-heart
 
@@ -1016,8 +1015,8 @@ pjax:
 
 # Inject the css and script (aplayer/meting)
 aplayerInject:
-  enable: true
-  per_page: false
+  enable: false
+  per_page: true
 
 # Snackbar - Toast Notification
 # https://github.com/polonel/SnackBar
@@ -1084,6 +1083,7 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/transpancy.css">
+    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'">
     - <link rel="preconnect" href="https://raw.githubusercontent.com">
     - |
       <script>
@@ -1095,7 +1095,67 @@ inject:
         })();
       </script>
   bottom:
-    - <div class="aplayer meting-tag-marker no-destroy" data-id="14396940385" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-theme="#e0e0e0"></div>
+    - <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    - |
+      <script>
+      (function() {
+        var player = null;
+        var container = null;
+
+        var playlist = [
+          { name: 'ちいさな日々', artist: 'flumpool', url: '/music/flumpool - ちいさな日々.mp3', cover: '/music/cover/flumpool - ちいさな日々.jpg', lrc: '/music/flumpool - ちいさな日々.lrc' },
+          { name: 'Fractures', artist: 'ILLENIUM、Nevve', url: '/music/ILLENIUM、Nevve - Fractures.mp3', cover: '/music/cover/ILLENIUM、Nevve - Fractures.jpg', lrc: '/music/ILLENIUM、Nevve - Fractures.lrc' },
+          { name: 'Dehors', artist: 'Jordann', url: '/music/Jordann - Dehors.mp3', cover: '/music/cover/Jordann - Dehors.jpg', lrc: '/music/Jordann - Dehors.lrc' },
+          { name: 'Turn The Page', artist: 'Sam Lin', url: '/music/Sam Lin - Turn The Page.mp3', cover: '/music/cover/Sam Lin - Turn The Page.jpg', lrc: '/music/Sam Lin - Turn The Page.lrc' },
+          { name: 'Picture of You', artist: 'Sara Kays', url: '/music/Sara Kays - Picture of You.mp3', cover: '/music/cover/Sara Kays - Picture of You.jpg', lrc: '/music/Sara Kays - Picture of You.lrc' },
+          { name: '踊り子', artist: 'Vaundy', url: '/music/Vaundy - 踊り子.mp3', cover: '/music/cover/Vaundy - 踊り子.jpg', lrc: '/music/Vaundy - 踊り子.lrc' },
+          { name: 'Call on me', artist: 'Vianney、Ed Sheeran', url: '/music/Vianney、Ed Sheeran - Call on me.mp3', cover: '/music/cover/Vianney、Ed Sheeran - Call on me.jpg', lrc: '/music/Vianney、Ed Sheeran - Call on me.lrc' },
+          { name: '風に吹かれて', artist: '福原遥', url: '/music/福原遥 - 風に吹かれて.mp3', cover: '/music/cover/福原遥 - 風に吹かれて.jpg', lrc: '/music/福原遥 - 風に吹かれて.lrc' },
+          { name: '心墙', artist: '郭静', url: '/music/郭静 - 心墙.mp3', cover: '/music/cover/郭静 - 心墙.jpg', lrc: '/music/郭静 - 心墙.lrc' }
+        ];
+        playlist.forEach(function(s) {
+          s.url = encodeURI(s.url);
+          s.cover = encodeURI(s.cover);
+          s.lrc = encodeURI(s.lrc);
+        });
+
+        function ensureContainer() {
+          if (container && document.body.contains(container)) return;
+          container = document.querySelector('.fixed-music-player');
+          if (!container) {
+            container = document.createElement('div');
+            container.className = 'fixed-music-player';
+          }
+          if (!document.body.contains(container)) {
+            document.body.appendChild(container);
+          }
+        }
+
+        function initPlayer() {
+          if (typeof APlayer === 'undefined') { setTimeout(initPlayer, 100); return; }
+          if (player) { ensureContainer(); return; }
+          ensureContainer();
+          player = new APlayer({
+            container: container,
+            audio: playlist,
+            fixed: true,
+            lrcType: 3,
+            listFolded: true,
+            theme: '#5BA0D0',
+            loop: 'all',
+            order: 'list',
+            preload: 'auto',
+            mutex: true
+          });
+        }
+
+        window.addEventListener('load', initPlayer);
+        document.addEventListener('pjax:complete', function() {
+          if (player) { ensureContainer(); }
+          else { setTimeout(initPlayer, 200); }
+        });
+      })();
+      </script>
     - |
       <script>
         (function() {
