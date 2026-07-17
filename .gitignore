@@ -1,12 +1,25 @@
+# Hexo
+public/
+db.json
+.deploy_git/
+
+# Node
+node_modules/
+
+# Elog（含密钥，不进仓库）
+.elog.env
+elog.cache.json
+
+# 系统/编辑器
 .DS_Store
 Thumbs.db
-db.json
 *.log
-node_modules/
-public/
-.deploy*/
-_multiconfig.yml
-.elog.env
-.elog.*.env
-elog.cache.json
-elog.*.cache.json
+.idea/
+.vscode/
+
+# WorkBuddy（项目数据，不进仓库）
+.workbuddy/
+
+# 其他
+nul
+*.tmp

@@ -1,0 +1,84 @@
+/* ============================================
+   自定义样式 — icodeq.com 风格
+   仅覆盖 Butterfly 配置无法处理的样式
+   目标行数 <150
+   ============================================ */
+
+/* ----- 全局卡片：24px 圆角 + 微阴影 ----- */
+#aside_content .card-widget,
+#recent-posts>.recent-post-item,
+#content-inner>div:first-child:not(.nc) {
+  border-radius: 24px;
+  box-shadow: 0 3px 8px 6px rgba(7, 17, 27, .05);
+}
+
+html[data-theme="dark"] #aside_content .card-widget,
+html[data-theme="dark"] #recent-posts>.recent-post-item,
+html[data-theme="dark"] #content-inner>div:first-child:not(.nc) {
+  box-shadow: 0 3px 8px 6px rgba(0, 0, 0, .15);
+}
+
+/* ----- 文章正文 ----- */
+#article-container {
+  font-size: 14px;
+  line-height: 2;
+  color: #4c4948;
+  padding: 50px 40px;
+}
+
+html[data-theme="dark"] #article-container {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ----- 标题层级：H2 不加粗，H3 加粗 ----- */
+#article-container h2,
+#article-container h4,
+#article-container h5,
+#article-container h6 {
+  font-weight: 400 !important;
+}
+
+#article-container h3 {
+  font-weight: 700 !important;
+}
+
+/* ----- 文章内链接 ----- */
+#article-container a {
+  border-bottom: 1px solid rgba(73, 177, 245, .3);
+}
+
+html[data-theme="dark"] #article-container a {
+  border-bottom-color: rgba(123, 184, 224, .3);
+}
+
+/* ----- 文章标题：居中、不加粗 ----- */
+.post-title,
+h1.post-title {
+  font-weight: 400 !important;
+  text-align: center;
+}
+
+/* ----- 首页卡片标题 ----- */
+.recent-post-item .article-title {
+  font-weight: 400;
+  font-size: 1.7em;
+}
+
+/* ----- 卡片 hover ----- */
+.recent-post-item {
+  cursor: pointer;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.recent-post-item:hover {
+  transform: translateY(-4px);
+}
+
+/* ----- 页脚：保持透明 ----- */
+#footer {
+  background: rgba(255, 255, 255, .05);
+}
+
+[data-theme="dark"] #footer {
+  background: rgba(0, 0, 0, .3);
+}

@@ -1,5 +1,5 @@
 ---
-title: 分类
+title: 音乐
 date: 2025-10-07 00:00:00
-type: categories
+type: music
 ---
