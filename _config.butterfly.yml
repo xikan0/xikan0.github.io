@@ -22,7 +22,6 @@ menu:
   分类: /categories/ || fas fa-folder-open
   友链: /link/ || fas fa-link
   说说: /shuoshuo/ || fas fa-comments
-  音乐: /music/ || fas fa-music
   关于: /about/ || fas fa-heart
 
 # =====================================================
@@ -52,7 +51,7 @@ social:
 # =====================================================
 
 # 网站图标（浏览器标签页图标）
-favicon: https://raw.githubusercontent.com/xikan0/ImgHosting/refs/heads/main/ICON/earth.ico
+favicon: /img/favicon.ico
 
 # 头像（显示在侧边栏顶部）
 avatar:
@@ -86,7 +85,7 @@ category_img:
 category_per_img:
 
 # 页脚背景图，false 表示不需要
-footer_img: false
+footer_img: true
 
 # 网站整体背景（颜色值、图片URL 或随机数组）
 background:
@@ -96,7 +95,7 @@ cover:
   index_enable: true             # 首页是否显示文章封面
   aside_enable: true             # 侧边栏是否显示文章封面
   archives_enable: true          # 归档页是否显示文章封面
-  default_cover:                 # 默认封面图（文章没设置 cover 时使用）
+  default_cover: https://cdn.jsdelivr.net/gh/xikan0/ImgHosting@main/PIC/P10.webp               # 默认封面图（文章没设置 cover 时使用）
 
 # 图片加载失败时的替换图
 error_img:
@@ -105,7 +104,7 @@ error_img:
 
 # 自定义 404 页面
 error_404:
-  enable: false                  # 是否启用
+  enable: true                   # 是否启用
   subtitle: 'Page Not Found'     # 404 页显示的文字
   background: /img/error-page.png
 
@@ -249,7 +248,7 @@ aside:
 
   # 公告栏
   card_announcement:
-    enable: true
+    enable: false
     content: This is my Blog     # 公告内容（支持 HTML）
 
   # 最新文章
@@ -346,7 +345,7 @@ copy:
 
 # 字数统计（需要 hexo-wordcount 插件）
 wordcount:
-  enable: false                  # 是否显示字数统计
+  enable: true                   # 是否显示字数统计
   post_wordcount: true
   min2read: true                 # 阅读时长
   total_wordcount: true          # 全站字数
@@ -374,7 +373,7 @@ math:
 # 十三、搜索
 # =====================================================
 search:
-  use:                           # algolia_search / local_search / docsearch，留空不用
+  use: local_search              # algolia_search / local_search / docsearch，留空不用
   placeholder:                   # 搜索框提示文字
 
   algolia_search:
@@ -491,7 +490,7 @@ mask:
 
 # Loading 加载动画
 preloader:
-  enable: false                  # 是否启用
+  enable: true                  # 是否启用
   source: 1                      # 1-全屏加载 / 2-顶部进度条
 
 # 页面过渡动画
@@ -512,7 +511,7 @@ beautify:
 font:
   global_font_size: 14px         # 全局正文大小
   code_font_size: 14px           # 代码字号
-  font_family: Lato, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif
+  font_family: '"LXGW WenKai", Lato, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif'
   code_font_family:              # 代码字体
 
 # 站点标题字体（可引入 Google Fonts）
@@ -609,12 +608,12 @@ snackbar:
   bg_dark: '#1f1f1f'
 
 # 预加载插件（鼠标悬停链接时预加载，提升感知速度）
-instantpage: false
+instantpage: true
 
 # 图片懒加载
 lazyload:
-  enable: false
-  native: false                  # 使用浏览器原生懒加载
+  enable: true
+  native: true                   # 使用浏览器原生懒加载
   field: site
   blur: false
 
@@ -636,7 +635,11 @@ css_prefix: true
 # 注入自定义代码（在 <head> 或 <body> 底部插入 HTML）
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    # 霞鹜文楷 webfont（jsdelivr CDN，font-display:swap + unicode-range 按需子集加载）
+    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css">
+    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-bold.css">
+    # 站点自定义样式（放在 index.css 之后加载，确保覆盖主题默认样式）
+    - <link rel="stylesheet" href="/css/custom.css">
   bottom:
     - <script src="/js/music.js"></script>
 

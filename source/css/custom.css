@@ -7,14 +7,16 @@
 /* ----- 全局卡片：24px 圆角 + 微阴影 ----- */
 #aside_content .card-widget,
 #recent-posts>.recent-post-item,
-#content-inner>div:first-child:not(.nc) {
+#content-inner>#post,
+#content-inner>#page:not(.nc) {
   border-radius: 24px;
   box-shadow: 0 3px 8px 6px rgba(7, 17, 27, .05);
 }
 
 html[data-theme="dark"] #aside_content .card-widget,
 html[data-theme="dark"] #recent-posts>.recent-post-item,
-html[data-theme="dark"] #content-inner>div:first-child:not(.nc) {
+html[data-theme="dark"] #content-inner>#post,
+html[data-theme="dark"] #content-inner>#page:not(.nc) {
   box-shadow: 0 3px 8px 6px rgba(0, 0, 0, .15);
 }
 
@@ -81,4 +83,18 @@ h1.post-title {
 
 [data-theme="dark"] #footer {
   background: rgba(0, 0, 0, .3);
+}
+
+/* ----- 全站背景：画廊灰 -----
+   冷调浅灰底 + 中性细颗粒（内联 SVG 噪点，去色、无缝平铺）
+   画廊原则：白卡如展品浮于灰墙，与彩色二次元/风景头图天然协调
+   零图片请求、零 JS、无动画，成本等同纯色背景 ----- */
+body {
+  background-color: #f3f4f6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+}
+
+html[data-theme="dark"] body {
+  background-color: #0e0e10;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E");
 }

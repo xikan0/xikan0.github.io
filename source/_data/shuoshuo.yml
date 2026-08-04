@@ -1,27 +1,7 @@
-- author: Butterfly
-  avatar: https://butterfly.js.org/img/avatar.png
-  date: 2024-06-21 23:33:26
-  key: key-1
+- author: Xikan
+  avatar: https://cdn.jsdelivr.net/gh/xikan0/ImgHosting@main/PIC/nh2.webp
+  date: 2026-07-17 14:09:22
   content: |
-    This is a sample content for **Author 1**.
-    ![Sample Image](https://via.placeholder.com/150)
+    博客搭好了，之后会在这里随手记录一些日常和想法。
   tags:
-    - tags1
-    - tags2
-- author: Butterfly
-  avatar: https://butterfly.js.org/img/avatar.png
-  date: 2024-06-20 23:33:26
-  key: key-2
-  content: |
-    This is a sample content for **Author 2**.
-    ![Sample Image](https://via.placeholder.com/150)
-  tags:
-    - tag2
-    - tag3
-
-- author: Butterfly
-  avatar: https://butterfly.js.org/img/avatar.png
-  date: 2024-06-19 23:33:26
-  key: key-3
-  content: |
-    This is a sample content for **Author 3**.
+    - 日常

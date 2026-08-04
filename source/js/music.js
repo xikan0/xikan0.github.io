@@ -13,7 +13,7 @@ function initMusicPlayer() {
   new APlayer({
     container: container,
     fixed: true,
-    lrcType: 1,
+    lrcType: 3,
     audio: [
       { name: 'Dehors',         artist: 'Jordann',              url: '/music/Jordann - Dehors.mp3',             cover: '/music/cover/Jordann - Dehors.jpg',             lrc: '/music/Jordann - Dehors.lrc' },
       { name: 'Turn The Page',  artist: 'Sam Lin',              url: '/music/Sam Lin - Turn The Page.mp3',      cover: '/music/cover/Sam Lin - Turn The Page.jpg',      lrc: '/music/Sam Lin - Turn The Page.lrc' },
